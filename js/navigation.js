@@ -1,10 +1,11 @@
 class NavigationController {
   constructor() {
-    this.currentPage = 1;
-    this.totalPages = 3;
+    this.currentLocation = 1;
+    this.totalLocations = 2;
     this.btnPrev = document.getElementById('btn-prev');
     this.btnNext = document.getElementById('btn-next');
     this.indicator = document.getElementById('page-indicator');
+    this.isAnimating = false;
   }
 
   init() {
@@ -13,31 +14,69 @@ class NavigationController {
     this.updateUI();
   }
 
-  goToPage(pageNumber) {
-    if (pageNumber < 1 || pageNumber > this.totalPages) return;
-
-    const currentEl = document.getElementById(`page-${this.currentPage}`);
-    if (currentEl) currentEl.classList.remove('active');
-
-    this.currentPage = pageNumber;
-
-    const nextEl = document.getElementById(`page-${this.currentPage}`);
-    if (nextEl) nextEl.classList.add('active');
-
-    this.updateUI();
-  }
-
   nextPage() {
-    if (this.currentPage < this.totalPages) this.goToPage(this.currentPage + 1);
+    if (this.currentLocation >= this.totalLocations || this.isAnimating) return;
+
+    this.isAnimating = true;
+    const paper1 = document.getElementById('paper-1');
+    const coverBack = document.querySelector('.cover-back-face');
+
+    if (paper1) paper1.classList.add('flipped');
+
+    this.currentLocation++;
+    this.updateUI();
+
+    setTimeout(() => {
+      if (coverBack) {
+        coverBack.style.visibility = 'hidden';
+      }
+      this.isAnimating = false;
+    }, 900);
   }
 
   prevPage() {
-    if (this.currentPage > 1) this.goToPage(this.currentPage - 1);
+    if (this.currentLocation <= 1 || this.isAnimating) return;
+
+    this.isAnimating = true;
+    const paper1 = document.getElementById('paper-1');
+    const coverBack = document.querySelector('.cover-back-face');
+
+    if (coverBack) {
+      coverBack.style.visibility = 'visible';
+    }
+
+    if (paper1) paper1.classList.remove('flipped');
+
+    this.currentLocation--;
+    this.updateUI();
+
+    setTimeout(() => {
+      this.isAnimating = false;
+    }, 900);
+  }
+
+  // Método para reiniciar el estado de la página al cerrar el libro
+  resetToFirstPage() {
+    this.currentLocation = 1;
+    this.isAnimating = false;
+    this.updateUI();
   }
 
   updateUI() {
-    if (this.indicator) this.indicator.textContent = `Página ${this.currentPage} de ${this.totalPages}`;
-    if (this.btnPrev) this.btnPrev.disabled = this.currentPage === 1;
-    if (this.btnNext) this.btnNext.disabled = this.currentPage === this.totalPages;
+    if (this.indicator) {
+      this.indicator.textContent = `Sección ${this.currentLocation} de ${this.totalLocations}`;
+    }
+    if (this.btnPrev) {
+      this.btnPrev.disabled = this.currentLocation === 1;
+    }
+    if (this.btnNext) {
+      this.btnNext.disabled = this.currentLocation === this.totalLocations;
+    }
   }
 }
+
+// Inicializar y asignar la instancia de forma global
+document.addEventListener('DOMContentLoaded', () => {
+  window.navigationInstance = new NavigationController();
+  window.navigationInstance.init();
+});
