@@ -1,0 +1,51 @@
+.book-controls {
+  position: fixed;
+  bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(15, 10, 6, 0.92);
+  padding: 10px 22px;
+  border-radius: 25px;
+  border: 1px solid #c5a059;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+  z-index: 100;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid #c5a059;
+  color: #c5a059;
+  padding: 7px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: #c5a059;
+  color: #1a1008;
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.close-btn {
+  border-color: #a84b4b;
+  color: #e07a7a;
+}
+
+.close-btn:hover:not(:disabled) {
+  background: #a84b4b;
+  color: #fff;
+}
+
+.page-indicator {
+  color: #f2e8cf;
+  font-size: 0.85rem;
+  margin: 0 8px;
+}

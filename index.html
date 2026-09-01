@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veritates Mundi — El Libro de las Verdades</title>
+  
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/book.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/animation.css">
+</head>
+<body>
+
+  <!-- Fondo atmosférico de biblioteca -->
+  <div class="bg-library"></div>
+
+  <!-- Contenedor del Libro 3D -->
+  <main class="book-container">
+    <div class="book closed" id="book">
+      
+      <!-- Portada con doble cara 3D -->
+      <div class="cover front-cover" id="cover-front">
+        <!-- Cara Exterior (Frontal) -->
+        <div class="cover-face cover-front-face">
+          <div class="cover-design">
+            <div class="ornament">✦</div>
+            <h1 class="book-title">VERITATES MUNDI</h1>
+            <p class="book-subtitle">El Libro de las Verdades</p>
+            <div class="ornament">✦</div>
+            <p class="click-hint">✦ Haz clic para abrir el libro ✦</p>
+          </div>
+        </div>
+        <!-- Cara Interior (Visible al abrir) -->
+        <div class="cover-face cover-back-face">
+          <div class="inside-cover-design">
+            <div class="watermark-symbol">⚖</div>
+            <p class="ex-libris">EX LIBRIS VERITATIS</p>
+            <p class="inside-quote">"La verdad prevalece sobre el tiempo y la incertidumbre."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hojas del Libro -->
+      <div class="pages-container">
+        
+        <!-- Página 1: Introducción -->
+        <section class="page page-1 active" id="page-1">
+          <div class="page-content">
+            <span class="page-number">PÁGINA I</span>
+            <h2 class="page-title">Bienvenido a Veritates Mundi</h2>
+            <div class="divider">✦ ✦ ✦</div>
+            <p class="intro-text">
+              Has abierto el compendio que alberga el análisis del conocimiento digital. Este artefacto combina la sabiduría analítica antigua con el rigor tecnológico moderno.
+            </p>
+            <p class="intro-text">
+              Utiliza la navegación para explorar las herramientas de verificación de portales web y análisis profundo de manuscritos.
+            </p>
+          </div>
+        </section>
+
+        <!-- Página 2: Analizador URL (Reserva Fase 5) -->
+        <section class="page page-2" id="page-2">
+          <div class="page-content">
+            <span class="page-number">PÁGINA II</span>
+            <h2 class="page-title">Analizador de URL</h2>
+            <div class="divider">✦ ✦ ✦</div>
+            <p class="intro-text">Próximamente (Fase 5): Buscador y analizador de sitios web mediante URL con métricas simuladas de confiabilidad.</p>
+          </div>
+        </section>
+
+        <!-- Página 3: Analizador de Documentos (Reserva Fase 7) -->
+        <section class="page page-3" id="page-3">
+          <div class="page-content">
+            <span class="page-number">PÁGINA III</span>
+            <h2 class="page-title">Analizador de Documentos</h2>
+            <div class="divider">✦ ✦ ✦</div>
+            <p class="intro-text">Próximamente (Fase 7): Análisis de archivos PDF / Word, visor interactivo y estimador de Inteligencia Artificial.</p>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Contratapa posterior -->
+      <div class="cover back-cover"></div>
+    </div>
+  </main>
+
+  <!-- Barra de Navegación UI -->
+  <nav class="book-controls hidden" id="book-controls">
+    <button id="btn-prev" class="nav-btn" disabled>&larr; Anterior</button>
+    <span id="page-indicator" class="page-indicator">Página 1 de 3</span>
+    <button id="btn-next" class="nav-btn">Siguiente &rarr;</button>
+    <button id="btn-close" class="nav-btn close-btn">Cerrar Libro</button>
+  </nav>
+
+  <!-- Carga Modular de Scripts -->
+  <script src="js/navigation.js" defer></script>
+  <script src="js/book.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
