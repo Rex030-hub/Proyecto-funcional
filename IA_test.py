@@ -1,6 +1,6 @@
 import os
 from exa_py import Exa
-
+from urllib.parse import urlparse
 
 # 1. Configura tu API Key
 # Reemplaza con la clave que copiaste del Dashboard
@@ -19,31 +19,25 @@ url_semilla = "https://es.wikipedia.org/wiki/Inteligencia_artificial"
 print(f"Buscando páginas con contenido similar a: {url_semilla}\n")
 print("-----------------------------------------------------------")
 
-def obtener_tema_con_exa(url: str) -> str:
-    # 2. Solicitar a Exa el contenido y un resumen guiado sobre el tema
+def Detectar_tema(url: str) -> str:
     respuesta = exa.get_contents(
         urls=url,
         summary={
-            # Le indicamos a la IA de Exa exactamente qué queremos saber
             "query": "Escribe el tema principal del texto, si es posible, en un maximo de 15 palabras."
         }
     )
     
-    # 3. Obtener el resultado
     if respuesta.results:
         resultado = respuesta.results[0]
         return resultado.summary
     else:
         return "No se pudo extraer el contenido de la URL."
-
-def buscar_paginas_similares_por_tema(tema_detectado: str, cantidad_resultados: int = 5):
-    print(f"Buscando páginas relacionadas con el tema:\n'{tema_detectado}'\n")
     
-    # 2. Realizar búsqueda semántica en la web
+def buscar_paginas_similares_por_tema(tema_detectado: str, cantidad_resultados: int = 5):
+    
     busqueda = exa.search(
         query=tema_detectado,          # Usamos la descripción del tema como consulta
         type="neural",                 # Activa la búsqueda por significado/IA
-        #use_autoprompt=True,           # Exa optimiza el texto internamente para mejores resultados
         num_results=cantidad_resultados,
         
         #contents={
@@ -53,19 +47,36 @@ def buscar_paginas_similares_por_tema(tema_detectado: str, cantidad_resultados: 
         #}
     )
     
-    # 3. Mostrar las páginas web encontradas
     print(f"--- SE ENCONTRARON {len(busqueda.results)} PÁGINAS SIMILARES ---\n")
     for i, resultado in enumerate(busqueda.results, 1):
         print(f"[{i}] Título: {resultado.title}")
         print(f"    URL: {resultado.url}")
-        if hasattr(resultado, 'summary') and resultado.summary:
-            print(f"    Resumen: {resultado.summary}")
+        #if hasattr(resultado, 'summary') and resultado.summary:
+        #    print(f"    Resumen: {resultado.summary}")
         print("-" * 50)
 
+def Buscar_web_x_tema (Excluir: str, Tema: str, n: int):
+    
+    busqueda = exa.search(
+        query= Tema,
+        type="neural",
+        exclude_domains=Excluir,
+        num_results=1
+    )
+    for i, resultado in enumerate(busqueda.results, 1):
+        parsed_url = urlparse(resultado.url)
+        print(f"Resultado {n}: {resultado.title}")
+        print(f"URL: {resultado.url}")
+    return parsed_url.netloc
+
 # --- PRUEBA DEL CÓDIGO ---
-tema = obtener_tema_con_exa(url_semilla)
+tema = Detectar_tema(url_semilla)
+dominios = []
 
 print("--- TEMA DETECTADO POR EXA ---")
 print(tema)
-buscar_paginas_similares_por_tema(tema,cantidad_resultados=3)
+while len(dominios) < 5:
+    dominios.append(Buscar_web_x_tema(dominios, tema, len(dominios)))
+print(f"Dominios detectados: {dominios}")
+#buscar_paginas_similares_por_tema(tema,cantidad_resultados=3)
 
