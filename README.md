@@ -15,4 +15,4 @@
 #### Enlace Documentación
 <a href="https://docs.google.com/document/d/1SEmQSEQg7Sd1JMmSvHsdlzNDRYcmYorzM89TR2mXTTY/edit?usp=sharing">link documentación</a>
 #### Enlace Presentación
-<a href="https://canva.link/0bdi94spsrea4tw">link Presentacio</a>
+<a href="https://canva.link/0bdi94spsrea4tw">link Presentación</a>
