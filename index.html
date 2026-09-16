@@ -3,48 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bibliography Search — El libro e análisis</title>
-  
+  <meta name="description" content="Bibliography Search: interfaz interactiva para el análisis simulado de fuentes bibliográficas y documentos PDF.">
+  <title>Bibliography Search — El libro de análisis</title>
+
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/book.css">
   <link rel="stylesheet" href="css/navigation.css">
-  <link rel="stylesheet" href="css/animation.css">
+  <link rel="stylesheet" href="css/modal.css">
 </head>
-<body>
+<body class="theme-default">
+  <!-- CABECERA: Isotipo fijo -->
+  <header class="env-header">
+    <img src="assets/isotipo.png" alt="Bibliography Search" class="brand-logo">
+  </header>
 
-  <div class="bg-library"></div>
+  <!-- CONTROLES SUPERIORES DERECHOS -->
+  <aside class="env-controls-top">
+    <button id="btn-theme-toggle" class="subtle-theme-btn" type="button" title="Alternar tema de color (Alt + T)" aria-label="Cambiar tema de color">
+      <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 3v18a9 9 0 0 0 0-18z" fill="currentColor"></path>
+      </svg>
+      <span class="theme-label" id="theme-label">Tema Estándar</span>
+      <kbd class="subtle-key">Alt + T</kbd>
+    </button>
+  </aside>
 
-  <main class="book-container">
-    <div class="book closed" id="book">
-      
-      <!-- PORTADA Y SU REVERSO (ANÁLISIS URL) -->
+  <div class="bg-library" aria-hidden="true"></div>
+
+  <!-- CONTENEDOR PRINCIPAL DEL LIBRO -->
+  <main class="book-container" id="main-book-view">
+    <div class="book closed" id="book" tabindex="0" role="button" aria-label="Abrir libro de análisis bibliográfico">
+
+      <!-- PORTADA CON TEXTURA DE CUERO Y REVERSO EN PERGAMINO -->
       <div class="cover front-cover" id="cover-front">
-        <div class="cover-face cover-front-face">
+        <div class="cover-face cover-front-face leather-texture">
           <div class="cover-design">
             <h1 class="book-title">BIBLIOGRAPHY SEARCH</h1>
             <p class="book-subtitle">El libro del análisis</p>
-            <p class="click-hint">click acá para abrir</p>
+            <p class="click-hint">
+              click acá para abrir
+              <span class="subtle-key-inline">↵ Enter</span>
+            </p>
           </div>
         </div>
-        <div class="cover-face cover-back-face">
+        <div class="cover-face cover-back-face parchment-paper">
           <div class="page-content">
             <span class="page-number">PÁGINA I</span>
             <h2 class="page-title">Análisis URL</h2>
             <div class="divider">✦ ✦ ✦</div>
-            <p class="intro-text">[Aquí irá la herramienta del Analizador de URL]</p>
+            <div class="url-analyzer-container">
+              <form id="url-search-form" class="minimal-search-form">
+                <div class="input-wrapper">
+                  <label class="sr-only" for="url-input">Dirección web a analizar</label>
+                  <input type="url" id="url-input" class="minimal-input" placeholder="Ingresa la dirección web a analizar..." autocomplete="url" required>
+                </div>
+                <div class="button-group">
+                  <button type="submit" class="minimal-btn action-btn">Analizar Fuente</button>
+                  <button type="button" id="btn-url-details" class="minimal-btn secondary-btn">Detalles</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- HOJAS INTERNAS EN 3D -->
+      <!-- HOJAS INTERNAS EN PERGAMINO ANTIGUO -->
       <div class="pages-container">
-        
-        <!-- HOJA 1:
-             - Frente: Instrucciones URL
-             - Reverso: Análisis PDF
-        -->
+
+        <!-- HOJA 1: PÁGINA II (Frente) / PÁGINA III (Reverso) -->
         <div class="paper" id="paper-1">
-          <div class="paper-face paper-front">
+          <div class="paper-face paper-front parchment-paper">
             <div class="page-content">
               <span class="page-number">PÁGINA II</span>
               <h2 class="page-title">Instrucciones de Uso</h2>
@@ -54,53 +83,172 @@
               </p>
             </div>
           </div>
-          <div class="paper-face paper-back">
-            <div class="page-content">
+
+          <div class="paper-face paper-back parchment-paper">
+            <div class="page-content pdf-page-content">
               <span class="page-number">PÁGINA III</span>
               <h2 class="page-title">Análisis PDF</h2>
               <div class="divider">✦ ✦ ✦</div>
-              <p class="intro-text">[Aquí irá la herramienta de lectura y análisis de PDF]</p>
+
+              <div class="document-analyzer" id="document-analyzer">
+                <div class="document-upload-area" id="pdf-upload-area">
+                  <label class="document-upload-label" for="pdf-file-input">
+                    <span class="document-upload-icon" aria-hidden="true">▤</span>
+                    <span>Selecciona un PDF para analizar</span>
+                    <small>Se simulará un análisis heurístico de patrones compatibles con uso o asistencia de IA.</small>
+                  </label>
+                  <input id="pdf-file-input" type="file" accept="application/pdf,.pdf" class="pdf-file-input">
+                </div>
+
+                <div class="document-selected hidden" id="document-selected">
+                  <div class="document-file-row">
+                    <span class="document-file-name" id="pdf-file-name">Sin archivo</span>
+                    <button type="button" class="document-remove-btn" id="btn-pdf-remove" aria-label="Quitar archivo">×</button>
+                  </div>
+                  <button type="button" class="minimal-btn action-btn document-analyze-btn" id="btn-pdf-analyze">Analizar Documento</button>
+                </div>
+
+                <div class="document-result hidden" id="document-result" aria-live="polite">
+                  <span class="document-result-label">Resultado del análisis · DEMOSTRACIÓN</span>
+                  <div class="document-result-main">
+                    <strong id="document-ai-score">--%</strong>
+                    <span>patrones compatibles con uso de IA</span>
+                  </div>
+                  <p id="document-result-summary">Selecciona y analiza un documento para obtener el resultado.</p>
+                  <button type="button" class="minimal-btn secondary-btn" id="btn-document-details">Detalles</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- HOJA 2:
-             - Frente: Instrucciones PDF
-        -->
+        <!-- HOJA 2: PÁGINA IV (Frente) / FIN (Reverso) -->
         <div class="paper" id="paper-2">
-          <div class="paper-face paper-front">
+          <div class="paper-face paper-front parchment-paper">
             <div class="page-content">
               <span class="page-number">PÁGINA IV</span>
-              <h2 class="page-title">Instrucciones de Uso</h2>
+              <h2 class="page-title">Análisis Documental</h2>
               <div class="divider">✦ ✦ ✦</div>
               <p class="intro-text">
-                Sube un archivo en formato PDF/Word a la herramienta de la izquierda para escanear su autenticidad mediante IA.
+                El documento se recibe directamente en el frontend. Pulsa <strong>Analizar Documento</strong> para ejecutar la demostración y luego <strong>Detalles</strong> para consultar las evidencias y el informe heurístico.
               </p>
             </div>
           </div>
-          <div class="paper-face paper-back">
+
+          <div class="paper-face paper-back parchment-paper">
             <div class="page-content">
               <span class="page-number">FIN</span>
               <h2 class="page-title">Fin del Tomo</h2>
+              <div class="divider">✦ ✦ ✦</div>
+              <p class="intro-text">Has llegado al final del libro de análisis.</p>
             </div>
           </div>
         </div>
-
       </div>
 
+      <!-- CONTRAPORTADA -->
       <div class="cover back-cover"></div>
     </div>
   </main>
 
-  <nav class="book-controls hidden" id="book-controls">
-    <button id="btn-prev" class="nav-btn" disabled>&larr; Anterior</button>
-    <span id="page-indicator" class="page-indicator">Sección 1 de 2</span>
-    <button id="btn-next" class="nav-btn">Siguiente &rarr;</button>
-    <button id="btn-close" class="nav-btn close-btn">Cerrar Libro</button>
+  <!-- APARTADO DINÁMICO ISO -->
+  <section class="iso-policy-view hidden" id="iso-policy-view" aria-labelledby="iso-section-title">
+    <div class="iso-container">
+      <header class="iso-header">
+        <button id="btn-back-to-book" class="iso-back-btn" type="button">&larr; Volver al Libro</button>
+        <span class="iso-badge">NORMATIVA &amp; CUMPLIMIENTO ISO</span>
+      </header>
+
+      <article class="iso-card">
+        <h2 id="iso-section-title" class="iso-title">Cargando Sección...</h2>
+        <div class="iso-divider">✦ ✦ ✦</div>
+        <div id="iso-section-content" class="iso-body"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTROLES DE NAVEGACIÓN -->
+  <nav class="book-controls hidden" id="book-controls" aria-label="Navegación del libro">
+    <button id="btn-prev" class="nav-btn" type="button" disabled>&larr; Anterior</button>
+    <span id="page-indicator" class="page-indicator" aria-live="polite">Sección 1 de 3</span>
+    <button id="btn-next" class="nav-btn" type="button">Siguiente &rarr;</button>
+    <button id="btn-close" class="nav-btn close-btn" type="button">Cerrar Libro</button>
   </nav>
 
+  <!-- BAJADA DINÁMICA DE NORMAS ISO -->
+  <footer class="env-footer" id="env-footer">
+    <div class="drawer-handle">
+      <span>✦ CUMPLIMIENTO NORMATIVO &amp; POLÍTICAS ISO ✦</span>
+    </div>
+    <div class="drawer-content">
+      <a href="#iso-security" class="drawer-link" data-iso="security">Seguridad &amp; SGSI (ISO 27001)</a>
+      <a href="#iso-quality" class="drawer-link" data-iso="quality">Calidad &amp; Calidez (ISO 25010)</a>
+      <a href="#iso-terms" class="drawer-link" data-iso="terms">Términos &amp; SLA (ISO 9001)</a>
+    </div>
+  </footer>
+
+  <!-- MODAL DE DETALLES TIPO PERGAMINO -->
+  <div id="parchment-modal" class="parchment-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="parchment-title">
+    <div class="parchment-popup">
+      <button class="parchment-close-btn" id="btn-close-parchment" type="button" aria-label="Cerrar detalles">&times;</button>
+      <div class="parchment-content">
+        <h3 class="parchment-title" id="parchment-title">Informe de Veracidad</h3>
+        <div class="divider">✦ ✦ ✦</div>
+        <div class="parchment-body" id="parchment-body">
+          <div id="url-details-panel">
+            <p class="parchment-item"><strong>Dominio:</strong> <span id="res-dominio">Sin analizar</span></p>
+            <p class="parchment-item"><strong>Confiabilidad:</strong> <span id="res-confianza">--%</span></p>
+            <p class="parchment-item"><strong>Tema:</strong> <span id="res-tema">Ninguno</span></p>
+            <p class="parchment-item"><strong>Motivo:</strong> <span id="res-motivo">Ejecuta un análisis para desplegar el reporte.</span></p>
+          </div>
+          <div id="document-details-panel" class="hidden document-report">
+            <div class="simulation-badge">RESULTADO SIMULADO · FRONTEND</div>
+            <div class="report-hero">
+              <div>
+                <span class="report-kicker">INFORME HEURÍSTICO</span>
+                <p class="parchment-item"><strong>Documento:</strong> <span id="res-document-name">Sin analizar</span></p>
+              </div>
+              <div class="report-score"><strong id="res-document-score">--%</strong><span>estimación de patrones compatibles</span></div>
+            </div>
+
+            <div class="parchment-subsection report-summary">
+              <h4>Interpretación del resultado</h4>
+              <p id="res-document-interpretation" class="parchment-item">Sin datos</p>
+            </div>
+
+            <div class="parchment-subsection">
+              <h4>Indicadores del análisis</h4>
+              <div id="res-document-stats" class="analysis-stats"></div>
+              <ul id="res-document-indicators" class="parchment-list"><li>El informe detallado aparecerá aquí.</li></ul>
+            </div>
+
+            <div class="parchment-subsection evidence-section">
+              <div class="evidence-section-heading">
+                <div>
+                  <h4>Evidencias detectadas</h4>
+                  <p class="parchment-note">Los fragmentos están resaltados para mostrar qué patrones motivaron la estimación.</p>
+                </div>
+                <span class="evidence-legend"><i></i> patrón marcado</span>
+              </div>
+              <div id="res-document-evidence" class="evidence-list"></div>
+            </div>
+
+            <div class="parchment-subsection">
+              <h4>Alcance del resultado</h4>
+              <p class="parchment-note">Este análisis es heurístico. Los patrones observados pueden aparecer también en textos escritos por personas. El porcentaje no constituye una prueba definitiva de autoría mediante IA.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api-config.js" defer></script>
   <script src="js/navigation.js" defer></script>
   <script src="js/book.js" defer></script>
+  <script src="js/modal.js" defer></script>
   <script src="js/app.js" defer></script>
+  <script src="js/url-analyzer.js" defer></script>
+  <script src="js/document-analyzer.js" defer></script>
 </body>
 </html>

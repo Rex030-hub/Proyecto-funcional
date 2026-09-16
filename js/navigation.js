@@ -1,82 +1,63 @@
-class NavigationController {
+class BookNavigation {
   constructor() {
-    this.currentLocation = 1;
-    this.totalLocations = 2;
+    this.currentPage = 0;
+    this.totalPages = 3;
+
     this.btnPrev = document.getElementById('btn-prev');
     this.btnNext = document.getElementById('btn-next');
-    this.indicator = document.getElementById('page-indicator');
-    this.isAnimating = false;
+    this.pageIndicator = document.getElementById('page-indicator');
+    this.paper1 = document.getElementById('paper-1');
+    this.paper2 = document.getElementById('paper-2');
+
+    this.init();
   }
 
   init() {
-    if (this.btnPrev) this.btnPrev.addEventListener('click', () => this.prevPage());
-    if (this.btnNext) this.btnNext.addEventListener('click', () => this.nextPage());
-    this.updateUI();
+    this.btnNext?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      this.nextPage();
+    });
+
+    this.btnPrev?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      this.prevPage();
+    });
+
+    this.applyFlip();
   }
 
   nextPage() {
-    if (this.currentLocation >= this.totalLocations || this.isAnimating) return;
-
-    this.isAnimating = true;
-    const paper1 = document.getElementById('paper-1');
-    const coverBack = document.querySelector('.cover-back-face');
-
-    if (paper1) paper1.classList.add('flipped');
-
-    this.currentLocation++;
-    this.updateUI();
-
-    setTimeout(() => {
-      if (coverBack) {
-        coverBack.style.visibility = 'hidden';
-      }
-      this.isAnimating = false;
-    }, 900);
+    if (this.currentPage >= this.totalPages - 1) return;
+    this.currentPage += 1;
+    this.applyFlip();
   }
 
   prevPage() {
-    if (this.currentLocation <= 1 || this.isAnimating) return;
-
-    this.isAnimating = true;
-    const paper1 = document.getElementById('paper-1');
-    const coverBack = document.querySelector('.cover-back-face');
-
-    if (coverBack) {
-      coverBack.style.visibility = 'visible';
-    }
-
-    if (paper1) paper1.classList.remove('flipped');
-
-    this.currentLocation--;
-    this.updateUI();
-
-    setTimeout(() => {
-      this.isAnimating = false;
-    }, 900);
+    if (this.currentPage <= 0) return;
+    this.currentPage -= 1;
+    this.applyFlip();
   }
 
-  // Método para reiniciar el estado de la página al cerrar el libro
-  resetToFirstPage() {
-    this.currentLocation = 1;
-    this.isAnimating = false;
+  applyFlip() {
+    this.paper1?.classList.toggle('flipped', this.currentPage >= 1);
+    this.paper2?.classList.toggle('flipped', this.currentPage >= 2);
     this.updateUI();
   }
 
   updateUI() {
-    if (this.indicator) {
-      this.indicator.textContent = `Sección ${this.currentLocation} de ${this.totalLocations}`;
+    if (this.pageIndicator) {
+      this.pageIndicator.textContent = `Sección ${this.currentPage + 1} de ${this.totalPages}`;
     }
-    if (this.btnPrev) {
-      this.btnPrev.disabled = this.currentLocation === 1;
-    }
-    if (this.btnNext) {
-      this.btnNext.disabled = this.currentLocation === this.totalLocations;
-    }
+    if (this.btnPrev) this.btnPrev.disabled = this.currentPage === 0;
+    if (this.btnNext) this.btnNext.disabled = this.currentPage === this.totalPages - 1;
+  }
+
+  resetToFirstPage() {
+    this.currentPage = 0;
+    this.applyFlip();
   }
 }
 
-// Inicializar y asignar la instancia de forma global
 document.addEventListener('DOMContentLoaded', () => {
-  window.navigationInstance = new NavigationController();
-  window.navigationInstance.init();
+  window.navigationInstance = new BookNavigation();
 });

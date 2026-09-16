@@ -2,78 +2,97 @@ document.addEventListener('DOMContentLoaded', () => {
   const book = document.getElementById('book');
   const bookControls = document.getElementById('book-controls');
   const btnClose = document.getElementById('btn-close');
+  let closeTimer = null;
+  let isClosing = false;
+  const BOOK_ANIMATION_MS = 1200;
 
-  // Evento para ABRIR el libro al hacer clic sobre la portada
-  if (book) {
-    book.addEventListener('click', () => {
-      if (book.classList.contains('closed')) {
-        book.classList.remove('closed');
-        book.classList.add('open');
+  if (!book) return;
 
-        if (bookControls) {
-          bookControls.classList.remove('hidden');
-        }
-      }
-    });
+  function isTypingTarget(target) {
+    return target instanceof HTMLInputElement ||
+      target instanceof HTMLTextAreaElement ||
+      target instanceof HTMLSelectElement ||
+      target?.isContentEditable;
   }
 
-  // Evento para CERRAR el libro de forma secuencial
-  if (btnClose) {
-    btnClose.addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeBook();
-    });
-  }
-});
+  function openBook() {
+    if (!book.classList.contains('closed') || isClosing) return;
 
-function closeBook() {
-  const book = document.getElementById('book');
-  const bookControls = document.getElementById('book-controls');
-  const coverBack = document.querySelector('.cover-back-face');
-  const paper1 = document.getElementById('paper-1');
-
-  // 1. Ocultar los controles de interfaz inmediatamente
-  if (bookControls) {
-    bookControls.classList.add('hidden');
-  }
-
-  // 2. Comprobar si la hoja estaba dada vuelta (Páginas III y IV)
-  const isPaperFlipped = paper1 && paper1.classList.contains('flipped');
-
-  if (isPaperFlipped) {
-    // A) Restaurar la portada interna antes de rotar la hoja
-    if (coverBack) {
-      coverBack.style.visibility = 'visible';
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
     }
 
-    // B) Regresar la hoja a su posición original
-    paper1.classList.remove('flipped');
+    book.classList.remove('closed');
+    book.classList.add('open');
+    book.setAttribute('aria-label', 'Libro de análisis bibliográfico abierto');
+    document.body.classList.add('is-book-open');
+    bookControls?.classList.remove('hidden');
+  }
 
-    // C) Esperar 750ms a que la hoja termine de caer antes de cerrar la portada
-    setTimeout(() => {
-      if (book) {
-        book.classList.remove('open');
-        book.classList.add('closed');
-      }
-      resetNavigationState();
-    }, 750);
+  function closeBook() {
+    if (!book.classList.contains('open') || isClosing) return;
 
-  } else {
-    // Si ya estaba en Páginas I y II, cerrar la portada directamente
-    if (coverBack) {
-      coverBack.style.visibility = 'visible';
-    }
-    if (book) {
+    isClosing = true;
+
+    // PRIMERA FASE: las hojas regresan a su posición inicial.
+    // La portada permanece abierta durante toda esta animación.
+    // Esto hace que, al cerrar desde PÁGINA III, la hoja PÁGINA II / III
+    // sea la primera en cerrarse y no desaparezca de golpe.
+    window.navigationInstance?.resetToFirstPage();
+    bookControls?.classList.add('hidden');
+
+    closeTimer = window.setTimeout(() => {
+      // SEGUNDA FASE: cuando las hojas ya terminaron de cerrarse,
+      // recién ahora se cierra la portada.
       book.classList.remove('open');
       book.classList.add('closed');
-    }
-    resetNavigationState();
-  }
-}
+      book.setAttribute('aria-label', 'Abrir libro de análisis bibliográfico');
+      document.body.classList.remove('is-book-open');
 
-// Función auxiliar para reiniciar el contador global
-function resetNavigationState() {
-  if (window.navigationInstance) {
-    window.navigationInstance.resetToFirstPage();
+      closeTimer = null;
+      isClosing = false;
+    }, BOOK_ANIMATION_MS);
   }
-}
+
+  book.addEventListener('click', () => {
+    if (book.classList.contains('closed')) openBook();
+  });
+
+  btnClose?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    closeBook();
+  });
+
+  book.addEventListener('keydown', (event) => {
+    if ((event.code === 'Enter' || event.code === 'Space') && book.classList.contains('closed')) {
+      event.preventDefault();
+      openBook();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const isClosed = book.classList.contains('closed');
+
+    if (isTypingTarget(event.target)) return;
+
+    if ((event.code === 'Space' || event.code === 'Enter') && isClosed) {
+      event.preventDefault();
+      openBook();
+      return;
+    }
+
+    if (isClosed || isClosing) return;
+
+    if (event.code === 'ArrowRight' || event.code === 'PageDown') {
+      event.preventDefault();
+      window.navigationInstance?.nextPage();
+    } else if (event.code === 'ArrowLeft' || event.code === 'PageUp') {
+      event.preventDefault();
+      window.navigationInstance?.prevPage();
+    } else if (event.code === 'Escape') {
+      event.preventDefault();
+      closeBook();
+    }
+  });
+});
