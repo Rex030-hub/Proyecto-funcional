@@ -1,42 +1,25 @@
+/*
+ * Controlador central de modales y vistas auxiliares.
+ * Mantiene una única lógica para apertura/cierre, foco y teclado.
+ */
 const ISO_POLICIES_DATA = {
   security: {
-    title: "Política de Seguridad de la Información — ISO/IEC 27001 & 27701",
+    title: "Política de seguridad de la información",
     content: `
-      <h3>1. Sistema de Gestión de Seguridad de la Información (SGSI)</h3>
-      <p>Bibliography Search opera bajo los lineamientos de la norma ISO/IEC 27001. Toda entrada de datos (direcciones URL o documentos subidos) se procesa en un entorno aislado con cifrado de extremo a extremo (TLS 1.3).</p>
-
-      <h3>2. Protección de Datos Personales y Privacidad (ISO/IEC 27701)</h3>
-      <p>Cumpliendo con los estándares de gestión de información de privacidad, la plataforma garantiza el principio de minimización de datos. No se conservan registros persistentes ni se perfila el comportamiento del usuario durante las consultas bibliográficas.</p>
-
-      <h3>3. Análisis en Memoria Reversible</h3>
-      <p>Las evaluaciones heurísticas se ejecutan en memoria volátil. Una vez que la sesión expira o el resultado es desplegado, la huella digital del recurso analizado es purgada permanentemente de los nodos de cómputo.</p>
-    `
+      <h3>Seguridad</h3>
+      <p>Acá contendrá todos los aspectos a considerar sobre nuestra página para informar al usuario.</p>`
   },
   quality: {
-    title: "Calidad de Software y Accesibilidad — ISO/IEC 25010 & WCAG",
+    title: "Calidad de software y accesibilidad",
     content: `
-      <h3>1. Modelo de Calidad de Software (ISO/IEC 25010)</h3>
-      <p>Nuestra arquitectura garantiza altos niveles de eficiencia de desempeño, compatibilidad, usabilidad y fiabilidad. Los algoritmos de estimación operan bajo márgenes de tolerancia rigurosamente validados.</p>
-
-      <h3>2. Accesibilidad e Interacción Humano-Computadora</h3>
-      <p>El diseño visual respeta las pautas W3C / WCAG 2.1 Nivel AA, asegurando contrastes adecuados, estructuras legibles y navegación fluida adaptable a múltiples dispositivos.</p>
-
-      <h3>3. Transparencia Algorítmica</h3>
-      <p>Los indicadores de veracidad resultantes corresponden a modelos analíticos de soporte, promoviendo la revisión técnica del usuario para mantener la integridad de las fuentes académicas.</p>
-    `
+      <h3>Calidad</h3>
+      <p>Se clasificará e informará todo lo relacionado con calidad de software, accesibilidad y transparencia.</p>`
   },
   terms: {
-    title: "Términos del Servicio y SLA — ISO 9001",
+    title: "Términos y servicios",
     content: `
-      <h3>1. Sistema de Gestión de Calidad (ISO 9001)</h3>
-      <p>Bibliography Search mantiene un compromiso de continuidad de servicio con disponibilidad garantizada. Toda actualización en el motor analítico sigue controles de calidad y auditoría de software.</p>
-
-      <h3>2. Condición de Publicación y Uso Aceptable</h3>
-      <p>Esta plataforma es apta para su publicación y distribución global al cumplir estrictamente con los requisitos legales y de protección de propiedad intelectual vigentes.</p>
-
-      <h3>3. Acuerdos de Responsabilidad</h3>
-      <p>Los reportes generados constituyen herramientas auxiliares de investigación. El usuario es responsable de la cita definitiva y verificación primaria de los documentos analizados.</p>
-    `
+      <h3>Terminos</h3>
+      <p>Se dispondrá de información de la gestión de calidad de software, cumplimientos legales, etc.</p>`
   }
 };
 
@@ -47,43 +30,102 @@ document.addEventListener('DOMContentLoaded', () => {
   const isoContent = document.getElementById('iso-section-content');
   const btnBack = document.getElementById('btn-back-to-book');
   const drawerLinks = document.querySelectorAll('.drawer-link');
+  const modal = document.getElementById('parchment-modal');
+  const modalTitle = document.getElementById('parchment-title');
+  const closeButton = document.getElementById('btn-close-parchment');
+  let lastFocusedElement = null;
 
-  function navigateToIsoSection(sectionKey) {
-    if (ISO_POLICIES_DATA[sectionKey]) {
-      isoTitle.textContent = ISO_POLICIES_DATA[sectionKey].title;
-      isoContent.innerHTML = ISO_POLICIES_DATA[sectionKey].content;
+  const getFocusable = () => {
+    if (!modal) return [];
+    return [...modal.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+      .filter((element) => element.offsetParent !== null);
+  };
 
-      if (mainBookView) mainBookView.classList.add('hidden');
-      if (isoView) isoView.classList.remove('hidden');
+  function closeParchment() {
+    if (!modal || modal.classList.contains('hidden')) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('details-ready');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    const target = lastFocusedElement;
+    lastFocusedElement = null;
+    if (target && document.contains(target)) {
+      requestAnimationFrame(() => target.focus({ preventScroll: true }));
     }
   }
 
+  function openParchment({ title, panelId }) {
+    if (!modal) return;
+    lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    if (modalTitle && title) modalTitle.textContent = title;
+    modal.querySelectorAll('[data-parchment-panel]').forEach((panel) => panel.classList.add('hidden'));
+    const panel = panelId ? document.getElementById(panelId) : null;
+    if (panel) panel.classList.remove('hidden');
+    modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    requestAnimationFrame(() => {
+      const target = closeButton || getFocusable()[0];
+      target?.focus({ preventScroll: true });
+    });
+  }
+
+  window.ParchmentModal = { open: openParchment, close: closeParchment };
+
+  closeButton?.addEventListener('click', closeParchment);
+  modal?.addEventListener('click', (event) => {
+    if (event.target === modal) closeParchment();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!modal || modal.classList.contains('hidden')) return;
+    if (event.code === 'Escape') {
+      event.preventDefault();
+      closeParchment();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+    const focusable = getFocusable();
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  function navigateToIsoSection(sectionKey) {
+    if (!ISO_POLICIES_DATA[sectionKey]) return;
+    isoTitle.textContent = ISO_POLICIES_DATA[sectionKey].title;
+    isoContent.innerHTML = ISO_POLICIES_DATA[sectionKey].content;
+    mainBookView?.classList.add('hidden');
+    isoView?.classList.remove('hidden');
+  }
+
   function returnToBookView() {
-    if (isoView) isoView.classList.add('hidden');
-    if (mainBookView) mainBookView.classList.remove('hidden');
+    isoView?.classList.add('hidden');
+    mainBookView?.classList.remove('hidden');
     history.replaceState(null, '', window.location.pathname + window.location.search);
   }
 
-  drawerLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
+  drawerLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
       const sectionKey = link.getAttribute('data-iso');
       navigateToIsoSection(sectionKey);
       history.replaceState(null, '', `#iso-${sectionKey}`);
     });
   });
 
-  if (btnBack) {
-    btnBack.addEventListener('click', () => {
-      returnToBookView();
-    });
-  }
+  btnBack?.addEventListener('click', returnToBookView);
 
   const initialHash = window.location.hash.replace('#', '');
   if (initialHash) {
-    const matchedKey = Object.keys(ISO_POLICIES_DATA).find(k => initialHash.includes(k));
-    if (matchedKey) {
-      navigateToIsoSection(matchedKey);
-    }
+    const matchedKey = Object.keys(ISO_POLICIES_DATA).find((key) => initialHash.includes(key));
+    if (matchedKey) navigateToIsoSection(matchedKey);
   }
 });

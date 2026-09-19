@@ -36,6 +36,8 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
   overflow: hidden;
   position: relative;
   font-family: 'Cinzel', serif, Georgia;
@@ -74,7 +76,7 @@ button:focus-visible, input:focus-visible, a:focus-visible {
 }
 
 .brand-logo {
-  width: 160px;
+  width: 80px;
   height: auto;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.6));
 }
@@ -278,11 +280,18 @@ button:focus-visible, input:focus-visible, a:focus-visible {
 }
 
 body.is-book-open .env-header,
-body.is-book-open .env-footer,
-body.is-book-open .env-controls-top {
+body.is-book-open .env-footer {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+}
+
+/* El selector de tema permanece disponible cuando el libro está abierto. */
+body.is-book-open .env-controls-top {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 300;
 }
 
 /* SECCIÓN ISO MODAL / VISTA DINÁMICA DE NORMATIVAS */
@@ -292,6 +301,7 @@ body.is-book-open .env-controls-top {
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   z-index: 90;
   background: rgba(10, 8, 7, 0.94);
   backdrop-filter: blur(12px);
@@ -382,4 +392,76 @@ body.is-book-open .env-controls-top {
 .iso-body p {
   margin-bottom: 15px;
   text-align: justify;
+}
+/* Estados de interfaz y reducción de movimiento */
+.analysis-status {
+  min-height: 1.2em;
+  margin-top: 8px;
+  font-family: 'Lora', serif;
+  font-size: .72rem;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--text-main);
+}
+
+.analysis-status:empty { visibility: hidden; }
+.analysis-status.loading { color: var(--accent-color); }
+.analysis-status.success { color: #9fcf9f; }
+.analysis-status.error { color: #f0a2a2; }
+
+body.modal-open { overflow: hidden; }
+
+@media (max-width: 700px) {
+  .env-header { top: max(12px, env(safe-area-inset-top)); left: 14px; }
+  .brand-logo { width: 112px; }
+
+  .env-controls-top {
+    top: max(10px, env(safe-area-inset-top));
+    right: max(10px, env(safe-area-inset-right));
+  }
+
+  .subtle-theme-btn {
+    padding: 5px 9px;
+    gap: 5px;
+    font-size: .65rem;
+  }
+
+  .subtle-key { display: none; }
+  .env-footer { width: 94vw; max-width: none; }
+  .drawer-handle { font-size: .66rem; letter-spacing: 1px; }
+  .drawer-content { flex-direction: column; align-items: center; gap: 12px; padding: 14px 10px 20px; }
+  .drawer-link { font-size: .72rem; }
+}
+
+@media (max-width: 420px) {
+  .env-header { display: none; }
+  .env-controls-top { top: 10px; right: 10px; }
+  .subtle-theme-btn .theme-label { display: none; }
+  .subtle-theme-btn { width: 34px; height: 34px; justify-content: center; padding: 0; }
+  .theme-icon { width: 16px; height: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}
+
+
+
+/* El selector de tema es una capa de interfaz independiente del libro. */
+@media (max-width: 700px) {
+  body.is-book-open .env-controls-top {
+    position: fixed !important;
+    top: max(10px, env(safe-area-inset-top)) !important;
+    right: max(10px, env(safe-area-inset-right)) !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
 }

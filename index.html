@@ -62,6 +62,7 @@
                   <button type="submit" class="minimal-btn action-btn">Analizar Fuente</button>
                   <button type="button" id="btn-url-details" class="minimal-btn secondary-btn">Detalles</button>
                 </div>
+                <p id="url-analysis-status" class="analysis-status" role="status" aria-live="polite"></p>
               </form>
             </div>
           </div>
@@ -78,9 +79,18 @@
               <span class="page-number">PÁGINA II</span>
               <h2 class="page-title">Instrucciones de Uso</h2>
               <div class="divider">✦ ✦ ✦</div>
-              <p class="intro-text">
-                Ingresa una dirección URL en el panel izquierdo para evaluar la veracidad y métricas de confiabilidad del portal web.
-              </p>
+              <div class="instructions-content">
+                <p class="intro-text">Para dar uso a la herramienta se debe seguir los siguientes pasos:</p>
+                <ol class="instructions-list">
+                  <li>Contar con el URL a analizar (Ej. <span class="instruction-code">https://www.ejemplo.com</span>).</li>
+                  <li>Pegar el URL en la barra llamada <strong>“Ingresa la dirección web para analizar…”</strong>.</li>
+                  <li>Presionar el botón <strong>“Analizar Fuente”</strong>.</li>
+                  <li>Una vez analizado el URL, se podrá ver la información relevante de la fuente analizada.</li>
+                </ol>
+                <div class="instruction-warning">
+                  <strong>Importante:</strong> la procedencia del URL debe corresponder a páginas de tipo noticias, blogs, corporativas o enciclopedias. Cualquier URL que no pertenezca a estas categorías no podrá realizar el respectivo análisis.
+                </div>
+              </div>
             </div>
           </div>
 
@@ -115,6 +125,7 @@
                     <span>patrones compatibles con uso de IA</span>
                   </div>
                   <p id="document-result-summary">Selecciona y analiza un documento para obtener el resultado.</p>
+                  <p id="pdf-analysis-status" class="analysis-status" role="status" aria-live="polite"></p>
                   <button type="button" class="minimal-btn secondary-btn" id="btn-document-details">Detalles</button>
                 </div>
               </div>
@@ -127,11 +138,20 @@
           <div class="paper-face paper-front parchment-paper">
             <div class="page-content">
               <span class="page-number">PÁGINA IV</span>
-              <h2 class="page-title">Análisis Documental</h2>
+              <h2 class="page-title">Instrucciones de Uso</h2>
               <div class="divider">✦ ✦ ✦</div>
-              <p class="intro-text">
-                El documento se recibe directamente en el frontend. Pulsa <strong>Analizar Documento</strong> para ejecutar la demostración y luego <strong>Detalles</strong> para consultar las evidencias y el informe heurístico.
-              </p>
+              <div class="instructions-content">
+                <p class="intro-text">Para dar uso a la herramienta se debe seguir los siguientes pasos:</p>
+                <ol class="instructions-list">
+                  <li>Contar con el documento PDF descargado en tu equipo.</li>
+                  <li>Puedes subir el documento de dos formas: arrastrándolo hacia la sección <strong>“Seleccionar un PDF para analizar”</strong> o presionando esa misma opción para abrir el explorador de archivos.</li>
+                  <li>Presionar el botón <strong>“Analizar Documento”</strong>.</li>
+                  <li>Para ver la información se debe presionar el botón <strong>“Detalles”</strong>.</li>
+                </ol>
+                <div class="instruction-warning">
+                  <strong>Importante:</strong> este análisis no constituye una prueba definitiva de autoría mediante IA. Es un análisis heurístico basado en distintos patrones observables y comprobables en el contenido.
+                </div>
+              </div>
             </div>
           </div>
 
@@ -156,7 +176,7 @@
     <div class="iso-container">
       <header class="iso-header">
         <button id="btn-back-to-book" class="iso-back-btn" type="button">&larr; Volver al Libro</button>
-        <span class="iso-badge">NORMATIVA &amp; CUMPLIMIENTO ISO</span>
+        <span class="iso-badge">CUMPLIMIENTOS NORMATIVOS</span>
       </header>
 
       <article class="iso-card">
@@ -178,30 +198,59 @@
   <!-- BAJADA DINÁMICA DE NORMAS ISO -->
   <footer class="env-footer" id="env-footer">
     <div class="drawer-handle">
-      <span>✦ CUMPLIMIENTO NORMATIVO &amp; POLÍTICAS ISO ✦</span>
+      <span>✦ CUMPLIMIENTOS NORMATIVOS ✦</span>
     </div>
     <div class="drawer-content">
-      <a href="#iso-security" class="drawer-link" data-iso="security">Seguridad &amp; SGSI (ISO 27001)</a>
-      <a href="#iso-quality" class="drawer-link" data-iso="quality">Calidad &amp; Calidez (ISO 25010)</a>
-      <a href="#iso-terms" class="drawer-link" data-iso="terms">Términos &amp; SLA (ISO 9001)</a>
+      <a href="#iso-security" class="drawer-link" data-iso="security">Seguridad</a>
+      <a href="#iso-quality" class="drawer-link" data-iso="quality">Calidad</a>
+      <a href="#iso-terms" class="drawer-link" data-iso="terms">Términos</a>
     </div>
   </footer>
 
   <!-- MODAL DE DETALLES TIPO PERGAMINO -->
-  <div id="parchment-modal" class="parchment-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="parchment-title">
+  <div id="parchment-modal" class="parchment-overlay hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="parchment-title">
     <div class="parchment-popup">
       <button class="parchment-close-btn" id="btn-close-parchment" type="button" aria-label="Cerrar detalles">&times;</button>
       <div class="parchment-content">
         <h3 class="parchment-title" id="parchment-title">Informe de Veracidad</h3>
         <div class="divider">✦ ✦ ✦</div>
         <div class="parchment-body" id="parchment-body">
-          <div id="url-details-panel">
-            <p class="parchment-item"><strong>Dominio:</strong> <span id="res-dominio">Sin analizar</span></p>
-            <p class="parchment-item"><strong>Confiabilidad:</strong> <span id="res-confianza">--%</span></p>
-            <p class="parchment-item"><strong>Tema:</strong> <span id="res-tema">Ninguno</span></p>
-            <p class="parchment-item"><strong>Motivo:</strong> <span id="res-motivo">Ejecuta un análisis para desplegar el reporte.</span></p>
+          <div id="url-details-panel" data-parchment-panel>
+            <div class="simulation-badge">RESULTADO SIMULADO · FRONTEND</div>
+
+            <div class="url-report-grid">
+              <div class="url-source-card">
+                <span class="report-kicker">INFORME DE LA FUENTE ANALIZADA</span>
+                <p class="parchment-item"><strong>Dominio:</strong> <span id="res-dominio">Sin analizar</span></p>
+                <p class="parchment-item"><strong>Confiabilidad estimada:</strong> <span id="res-confianza">--%</span></p>
+                <p class="parchment-item"><strong>Tema:</strong> <span id="res-tema">Ninguno</span></p>
+                <p class="parchment-item"><strong>Motivo:</strong> <span id="res-motivo">Ejecuta un análisis para desplegar el reporte.</span></p>
+              </div>
+
+              <div class="apa-card">
+                <span class="report-kicker">REFERENCIA DE LA FUENTE</span>
+                <h4>Cita en formato APA 7.ª edición</h4>
+                <p id="res-apa-citation" class="apa-citation">La referencia aparecerá al analizar una URL.</p>
+                <span class="apa-note">Referencia simulada para la demostración del frontend.</span>
+              </div>
+            </div>
+
+            <div class="parchment-subsection related-sources-section">
+              <div class="evidence-section-heading">
+                <div>
+                  <h4>Fuentes relacionadas</h4>
+                  <p class="parchment-note">Ejemplos de recursos que podrían complementar la investigación sobre el mismo tema.</p>
+                </div>
+                <span class="source-count">5 REFERENCIAS</span>
+              </div>
+              <div id="res-related-sources" class="related-sources-grid"></div>
+            </div>
+
+            <div class="parchment-subsection">
+              <p class="parchment-note">Las URL y referencias relacionadas de esta demostración son datos predeterminados. En la versión con backend, estas recomendaciones y sus citas se generarían a partir de la fuente realmente analizada.</p>
+            </div>
           </div>
-          <div id="document-details-panel" class="hidden document-report">
+          <div id="document-details-panel" class="hidden document-report" data-parchment-panel>
             <div class="simulation-badge">RESULTADO SIMULADO · FRONTEND</div>
             <div class="report-hero">
               <div>

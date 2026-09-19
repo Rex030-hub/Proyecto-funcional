@@ -18,16 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const summary = document.getElementById('document-result-summary');
   const btnDetails = document.getElementById('btn-document-details');
 
-  const parchmentModal = document.getElementById('parchment-modal');
-  const parchmentTitle = document.getElementById('parchment-title');
-  const urlDetailsPanel = document.getElementById('url-details-panel');
   const documentDetailsPanel = document.getElementById('document-details-panel');
-  const btnCloseParchment = document.getElementById('btn-close-parchment');
+  const pdfStatus = document.getElementById('pdf-analysis-status');
 
   if (!fileInput || !uploadArea || !selectedArea || !btnAnalyze || !resultArea) return;
 
   let selectedFile = null;
   let lastResult = null;
+  const MAX_FILE_SIZE = 15 * 1024 * 1024; // 15 MB: límite de UX, no de seguridad.
+
 
   const simulatedEvidence = [
     {
@@ -51,15 +50,18 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   function isPdf(file) {
-    return file && (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf'));
+    return Boolean(file && (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')));
+  }
+
+  function validatePdf(file) {
+    if (!isPdf(file)) return 'Selecciona un archivo PDF válido.';
+    if (file.size > MAX_FILE_SIZE) return 'El PDF supera el límite de 15 MB para esta demostración.';
+    return '';
   }
 
   function openDocumentDetails() {
-    if (!parchmentModal || !lastResult) return;
+    if (!lastResult || !window.ParchmentModal) return;
 
-    parchmentTitle.textContent = 'Análisis Detallado del Documento';
-    urlDetailsPanel?.classList.add('hidden');
-    documentDetailsPanel?.classList.remove('hidden');
 
     document.getElementById('res-document-name').textContent = lastResult.nombre;
     document.getElementById('res-document-score').textContent = lastResult.porcentaje;
@@ -83,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="evidence-reason"><strong>¿Por qué?</strong> ${item.reason}</p>
       </article>`).join('');
 
-    parchmentModal.classList.remove('hidden');
-    requestAnimationFrame(() => parchmentModal.classList.add('details-ready'));
+    window.ParchmentModal.open({ title: 'Análisis Detallado del Documento', panelId: 'document-details-panel' });
+    requestAnimationFrame(() => document.getElementById('parchment-modal')?.classList.add('details-ready'));
   }
 
   function highlightEvidence(text) {
@@ -96,9 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
       ? `<mark class="ai-highlight">${part}</mark>` : part).join('');
   }
 
-  function closeParchment() {
-    parchmentModal?.classList.add('hidden');
-    parchmentModal?.classList.remove('details-ready');
+  function setPdfStatus(message = '', type = '') {
+    if (!pdfStatus) return;
+    pdfStatus.textContent = message;
+    pdfStatus.className = `analysis-status ${type}`.trim();
   }
 
   function resetDocument() {
@@ -111,15 +114,18 @@ document.addEventListener('DOMContentLoaded', () => {
     resultArea.classList.add('hidden');
     score.textContent = '--%';
     summary.textContent = 'Selecciona y analiza un documento para obtener el resultado.';
+    setPdfStatus('');
   }
 
   function showSelectedFile(file) {
-    if (!isPdf(file)) {
-      window.alert('Selecciona un archivo PDF válido.');
+    const validationError = validatePdf(file);
+    if (validationError) {
+      setPdfStatus(validationError, 'error');
       resetDocument();
       return;
     }
     selectedFile = file;
+    setPdfStatus(`Archivo seleccionado: ${file.name}`, 'success');
     fileName.textContent = file.name;
     fileName.title = file.name;
     uploadArea.classList.add('hidden');
@@ -129,39 +135,51 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function analyzeDocument() {
-    if (!selectedFile) return;
+    if (!selectedFile) {
+      setPdfStatus('Selecciona un PDF antes de analizar.', 'error');
+      return;
+    }
 
     const originalText = btnAnalyze.textContent;
     btnAnalyze.textContent = 'Analizando documento...';
     btnAnalyze.disabled = true;
+    setPdfStatus('Analizando documento…', 'loading');
 
-    // Simulamos extracción, análisis heurístico y generación del informe.
-    await new Promise((resolve) => setTimeout(resolve, 1600));
+    try {
+      // Simulamos extracción, análisis heurístico y generación del informe.
+      await new Promise((resolve) => setTimeout(resolve, 1600));
 
-    lastResult = {
-      nombre: selectedFile.name,
-      porcentaje: '73%',
-      interpretacion: 'El análisis simulado encontró varios patrones compatibles con texto generado o asistido mediante IA. El resultado representa una estimación heurística y no una prueba definitiva de autoría.',
-      estadisticas: [
-        { label: 'Uniformidad sintáctica', value: 'Alta' },
-        { label: 'Variación léxica', value: 'Moderada-baja' },
-        { label: 'Patrones repetitivos', value: 'Detectados' },
-        { label: 'Estructura discursiva', value: 'Muy regular' }
-      ],
-      indicadores: [
-        'Alta regularidad en la longitud y construcción de oraciones.',
-        'Uso recurrente de formulaciones genéricas y conectores predecibles.',
-        'Repetición de conceptos con poca variación léxica.',
-        'Estructura argumentativa homogénea a lo largo de los fragmentos evaluados.'
-      ],
-      evidencias: simulatedEvidence
-    };
+      lastResult = {
+        nombre: selectedFile.name,
+        porcentaje: '73%',
+        interpretacion: 'El análisis simulado encontró varios patrones compatibles con texto generado o asistido mediante IA. El resultado representa una estimación heurística y no una prueba definitiva de autoría.',
+        estadisticas: [
+          { label: 'Uniformidad sintáctica', value: 'Alta' },
+          { label: 'Variación léxica', value: 'Moderada-baja' },
+          { label: 'Patrones repetitivos', value: 'Detectados' },
+          { label: 'Estructura discursiva', value: 'Muy regular' }
+        ],
+        indicadores: [
+          'Alta regularidad en la longitud y construcción de oraciones.',
+          'Uso recurrente de formulaciones genéricas y conectores predecibles.',
+          'Repetición de conceptos con poca variación léxica.',
+          'Estructura argumentativa homogénea a lo largo de los fragmentos evaluados.'
+        ],
+        evidencias: simulatedEvidence
+      };
 
-    score.textContent = lastResult.porcentaje;
-    summary.textContent = lastResult.interpretacion;
-    resultArea.classList.remove('hidden');
-    btnAnalyze.textContent = originalText;
-    btnAnalyze.disabled = false;
+      score.textContent = lastResult.porcentaje;
+      summary.textContent = lastResult.interpretacion;
+      resultArea.classList.remove('hidden');
+      setPdfStatus('Análisis completado correctamente.', 'success');
+    } catch (error) {
+      console.error('Error en el análisis del PDF:', error);
+      lastResult = null;
+      setPdfStatus('No fue posible completar el análisis. Intenta nuevamente.', 'error');
+    } finally {
+      btnAnalyze.textContent = originalText;
+      btnAnalyze.disabled = false;
+    }
   }
 
   fileInput.addEventListener('change', () => {
@@ -191,12 +209,4 @@ document.addEventListener('DOMContentLoaded', () => {
   btnAnalyze.addEventListener('click', analyzeDocument);
   btnDetails?.addEventListener('click', openDocumentDetails);
   btnRemove?.addEventListener('click', resetDocument);
-  btnCloseParchment?.addEventListener('click', closeParchment);
-  parchmentModal?.addEventListener('click', (event) => {
-    if (event.target === parchmentModal) closeParchment();
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.code === 'Escape' && parchmentModal && !parchmentModal.classList.contains('hidden')) closeParchment();
-  });
 });
