@@ -5,7 +5,7 @@ import re
 
 # 1. Configura tu API Key
 # Reemplaza con la clave que copiaste del Dashboard
-EXA_API_KEY = "78e60621-ee04-4ba5-a772-49c1ba2b4f18" 
+EXA_API_KEY = 
 
 # Inicializar cliente
 exa = Exa(api_key=EXA_API_KEY)
