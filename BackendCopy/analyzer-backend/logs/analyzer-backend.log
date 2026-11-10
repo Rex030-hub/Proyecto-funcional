@@ -1,0 +1,396 @@
+2026-11-09 15:37:01.564 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 19812 (C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes started by ialia in C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend)
+2026-11-09 15:37:01.567 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-09 15:37:02.136 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-09 15:37:02.148 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-09 15:37:02.149 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-09 15:37:02.210 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 590 ms
+2026-11-09 15:37:02.602 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-09 15:37:02.605 [] INFO  c.b.a.AnalyzerBackendApplication - Started AnalyzerBackendApplication in 1.353 seconds (process running for 1.588)
+2026-11-09 15:37:46.956 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09 15:37:46.956 [] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-09 15:37:46.957 [] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-11-09 15:37:46.960 [6787be2e] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/health desde 0:0:0:0:0:0:0:1
+2026-11-09 15:37:47.008 [6787be2e] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/health status=200 total=48 ms
+2026-11-09 15:37:47.109 [031a3032] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /favicon.ico desde 0:0:0:0:0:0:0:1
+2026-11-09 15:37:47.121 [031a3032] WARN  c.b.a.c.GlobalExceptionHandler - Recurso no encontrado (404): No static resource favicon.ico for request '/favicon.ico'.
+2026-11-09 15:37:47.152 [031a3032] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /favicon.ico status=404 total=43 ms
+2026-11-09 15:40:12.623 [ef54cc85] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/health desde 0:0:0:0:0:0:0:1
+2026-11-09 15:40:12.626 [ef54cc85] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/health status=200 total=3 ms
+2026-11-09 15:41:37.368 [7dfa2397] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-documento desde 0:0:0:0:0:0:0:1
+2026-11-09 15:41:37.709 [7dfa2397] INFO  c.b.analyzer.service.AnalisisService - [pdf:d339719d] extracción y limpieza en 319 ms (1981 palabras)
+2026-11-09 15:41:37.736 [7dfa2397] INFO  c.b.analyzer.service.AnalisisService - [pdf:d339719d] pilares y testigos calculados en 21 ms
+2026-11-09 15:41:37.740 [7dfa2397] INFO  c.b.analyzer.service.AnalisisService - [d339719d] IA1.pdf 81KB 348ms === CALIBRACIÓN === Anclaje empírico=100 Complejidad sintáctica=95 Burstiness=100 Voz autoral=100 Intensificadores vacíos=0 [T]Repetición de bigramas=0 [T]Conectores vacíos=0 [T]Uniformidad de párrafos=0 | texto=88 meta=8.0 | FINAL=96
+2026-11-09 15:41:37.753 [7dfa2397] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-documento status=200 total=385 ms
+2026-11-09 15:42:16.767 [69f6766a] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-documento desde 0:0:0:0:0:0:0:1
+2026-11-09 15:42:16.832 [69f6766a] INFO  c.b.analyzer.service.AnalisisService - [pdf:c25c4dd4] extracción y limpieza en 61 ms (1981 palabras)
+2026-11-09 15:42:16.850 [69f6766a] INFO  c.b.analyzer.service.AnalisisService - [pdf:c25c4dd4] pilares y testigos calculados en 14 ms
+2026-11-09 15:42:16.851 [69f6766a] INFO  c.b.analyzer.service.AnalisisService - [c25c4dd4] IA1.pdf 81KB 79ms === CALIBRACIÓN === Anclaje empírico=100 Complejidad sintáctica=95 Burstiness=100 Voz autoral=100 Intensificadores vacíos=0 [T]Repetición de bigramas=0 [T]Conectores vacíos=0 [T]Uniformidad de párrafos=0 | texto=88 meta=8.0 | FINAL=96
+2026-11-09 15:42:16.853 [69f6766a] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-documento status=200 total=86 ms
+2026-11-09 15:44:20.589 [ff897ded] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-documento desde 0:0:0:0:0:0:0:1
+2026-11-09 15:44:21.531 [ff897ded] INFO  c.b.analyzer.service.AnalisisService - [pdf:aa56477d] extracción y limpieza en 933 ms (76135 palabras)
+2026-11-09 15:44:22.051 [ff897ded] INFO  c.b.analyzer.service.AnalisisService - [pdf:aa56477d] pilares y testigos calculados en 434 ms
+2026-11-09 15:44:22.052 [ff897ded] INFO  c.b.analyzer.service.AnalisisService - [aa56477d] Decreto.pdf 610KB 1454ms === CALIBRACIÓN === Anclaje empírico=13 Complejidad sintáctica=0 Burstiness=0 Voz autoral=100 Intensificadores vacíos=0 [T]Repetición de bigramas=100 [T]Conectores vacíos=0 [T]Uniformidad de párrafos=0 | texto=15 meta=8.0 | FINAL=23
+2026-11-09 15:44:22.056 [ff897ded] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-documento status=200 total=1467 ms
+2026-11-09 15:46:31.771 [3ddd684f] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 15:46:31.849 [3ddd684f] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=500 total=78 ms
+2026-11-09 15:46:43.732 [9c32e4da] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 15:46:43.735 [9c32e4da] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=500 total=3 ms
+2026-11-09 15:46:56.467 [990313c2] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 15:46:56.470 [990313c2] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=500 total=3 ms
+2026-11-09 15:50:45.181 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 4988 (C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes started by ialia in C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend)
+2026-11-09 15:50:45.183 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-09 15:50:45.801 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-09 15:50:45.811 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-09 15:50:45.812 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-09 15:50:45.853 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 629 ms
+2026-11-09 15:50:45.996 [] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'fuenteController' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\controller\FuenteController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'urlAnalysisService' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\service\UrlAnalysisService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+2026-11-09 15:50:45.998 [] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-11-09 15:50:46.007 [] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-11-09 15:50:46.018 [] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'fuenteController' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\controller\FuenteController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'urlAnalysisService' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\service\UrlAnalysisService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.bibliography.analyzer.AnalyzerBackendApplication.main(AnalyzerBackendApplication.java:10)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'urlAnalysisService' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\service\UrlAnalysisService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1342)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 35 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:220)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:106)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1336)
+	... 47 common frames omitted
+Caused by: java.lang.IllegalStateException: Driver JDBC de SQLite no encontrado (revisa la dependencia sqlite-jdbc del pom).
+	at com.bibliography.analyzer.repository.FuenteRepository.<init>(FuenteRepository.java:40)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:194)
+	... 49 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.sqlite.JDBC
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:467)
+	at java.base/java.lang.Class.forName(Class.java:458)
+	at com.bibliography.analyzer.repository.FuenteRepository.<init>(FuenteRepository.java:38)
+	... 53 common frames omitted
+2026-11-09 15:53:54.416 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 17204 (C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes started by ialia in C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend)
+2026-11-09 15:53:54.419 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-09 15:53:55.070 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-09 15:53:55.081 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-09 15:53:55.082 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-09 15:53:55.123 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 668 ms
+2026-11-09 15:53:55.268 [] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'fuenteController' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\controller\FuenteController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'urlAnalysisService' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\service\UrlAnalysisService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+2026-11-09 15:53:55.270 [] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-11-09 15:53:55.279 [] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-11-09 15:53:55.289 [] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'fuenteController' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\controller\FuenteController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'urlAnalysisService' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\service\UrlAnalysisService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.bibliography.analyzer.AnalyzerBackendApplication.main(AnalyzerBackendApplication.java:10)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'urlAnalysisService' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\service\UrlAnalysisService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1342)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 35 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:220)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:106)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1336)
+	... 47 common frames omitted
+Caused by: java.lang.IllegalStateException: Driver JDBC de SQLite no encontrado (revisa la dependencia sqlite-jdbc del pom).
+	at com.bibliography.analyzer.repository.FuenteRepository.<init>(FuenteRepository.java:40)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:194)
+	... 49 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.sqlite.JDBC
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:467)
+	at java.base/java.lang.Class.forName(Class.java:458)
+	at com.bibliography.analyzer.repository.FuenteRepository.<init>(FuenteRepository.java:38)
+	... 53 common frames omitted
+2026-11-09 16:01:21.210 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 3492 (C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes started by ialia in C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend)
+2026-11-09 16:01:21.212 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-09 16:01:21.782 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-09 16:01:21.792 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-09 16:01:21.793 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-09 16:01:21.828 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 576 ms
+2026-11-09 16:01:21.963 [] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'fuenteController' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\controller\FuenteController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'urlAnalysisService' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\service\UrlAnalysisService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+2026-11-09 16:01:21.965 [] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-11-09 16:01:21.973 [] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-11-09 16:01:21.983 [] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'fuenteController' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\controller\FuenteController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'urlAnalysisService' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\service\UrlAnalysisService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.bibliography.analyzer.AnalyzerBackendApplication.main(AnalyzerBackendApplication.java:10)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'urlAnalysisService' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\service\UrlAnalysisService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fuenteRepository' defined in file [C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes\com\bibliography\analyzer\repository\FuenteRepository.class]: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1342)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 35 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.bibliography.analyzer.repository.FuenteRepository]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:220)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:106)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1336)
+	... 47 common frames omitted
+Caused by: java.lang.IllegalStateException: Driver JDBC de SQLite no encontrado (revisa la dependencia sqlite-jdbc del pom).
+	at com.bibliography.analyzer.repository.FuenteRepository.<init>(FuenteRepository.java:40)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:194)
+	... 49 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.sqlite.JDBC
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:467)
+	at java.base/java.lang.Class.forName(Class.java:458)
+	at com.bibliography.analyzer.repository.FuenteRepository.<init>(FuenteRepository.java:38)
+	... 53 common frames omitted
+2026-11-09 16:03:04.726 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 9792 (C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes started by ialia in C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend)
+2026-11-09 16:03:04.729 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-09 16:03:05.343 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-09 16:03:05.354 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-09 16:03:05.354 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-09 16:03:05.393 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 625 ms
+2026-11-09 16:03:05.790 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-09 16:03:05.800 [] INFO  c.b.a.AnalyzerBackendApplication - Started AnalyzerBackendApplication in 1.382 seconds (process running for 1.636)
+2026-11-09 16:03:20.120 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09 16:03:20.120 [] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-09 16:03:20.121 [] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-11-09 16:03:20.125 [ec43b012] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/health desde 0:0:0:0:0:0:0:1
+2026-11-09 16:03:20.178 [ec43b012] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/health status=200 total=53 ms
+2026-11-09 16:03:32.141 [14c9da20] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 16:03:32.219 [14c9da20] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/Club_Social_y_Deportivo_Colo-Colo en 5 ms -> miss
+2026-11-09 16:03:32.234 [14c9da20] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=500 total=93 ms
+2026-11-09 16:03:49.760 [bc9029f8] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 16:03:49.762 [bc9029f8] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/Club_Social_y_Deportivo_Colo-Colo en 1 ms -> miss
+2026-11-09 16:03:49.763 [bc9029f8] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=500 total=3 ms
+2026-11-09 16:04:42.410 [04e651cd] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 16:04:42.412 [04e651cd] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/Club_Social_y_Deportivo_Colo-Colo en 1 ms -> miss
+2026-11-09 16:04:42.413 [04e651cd] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=500 total=3 ms
+2026-11-09 16:05:50.082 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 17940 (C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend\target\classes started by ialia in C:\Users\ialia\Desktop\backend para produccion\Proyecto-funcional\BackendCopy\analyzer-backend)
+2026-11-09 16:05:50.085 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-09 16:05:50.657 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-09 16:05:50.668 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-09 16:05:50.668 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-09 16:05:50.704 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 584 ms
+2026-11-09 16:05:51.096 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-09 16:05:51.099 [] INFO  c.b.a.AnalyzerBackendApplication - Started AnalyzerBackendApplication in 1.31 seconds (process running for 1.555)
+2026-11-09 16:05:54.882 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-09 16:05:54.882 [] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-09 16:05:54.883 [] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-11-09 16:05:54.886 [3e2b8596] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/health desde 0:0:0:0:0:0:0:1
+2026-11-09 16:05:54.939 [3e2b8596] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/health status=200 total=53 ms
+2026-11-09 16:06:00.667 [fd0ac8f1] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 16:06:00.735 [fd0ac8f1] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/Club_Social_y_Deportivo_Colo-Colo en 4 ms -> miss
+2026-11-09 16:06:06.952 [fd0ac8f1] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 6216 ms
+2026-11-09 16:06:06.982 [fd0ac8f1] INFO  c.b.a.service.UrlAnalysisService - [url] extracción Exa de https://es.wikipedia.org/wiki/Club_Social_y_Deportivo_Colo-Colo completada en 6247 ms
+2026-11-09 16:06:06.992 [fd0ac8f1] INFO  c.b.a.service.UrlAnalysisService - [url] fuente persistida en 9 ms
+2026-11-09 16:06:07.506 [fd0ac8f1] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 509 ms
+2026-11-09 16:06:07.507 [fd0ac8f1] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para 'Colo / Consultado / Club'
+2026-11-09 16:06:14.753 [fd0ac8f1] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 7245 ms
+2026-11-09 16:06:21.674 [fd0ac8f1] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 6911 ms
+2026-11-09 16:06:28.260 [fd0ac8f1] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 6574 ms
+2026-11-09 16:06:34.785 [fd0ac8f1] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 6514 ms
+2026-11-09 16:06:41.550 [fd0ac8f1] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 6753 ms
+2026-11-09 16:06:41.556 [fd0ac8f1] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 34561 ms; total análisis 40825 ms
+2026-11-09 16:06:41.576 [fd0ac8f1] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=40909 ms
+2026-11-09 16:08:48.042 [999d4541] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 16:08:48.044 [999d4541] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/Club_Social_y_Deportivo_Colo-Colo en 1 ms -> hit
+2026-11-09 16:08:48.047 [999d4541] INFO  c.b.a.service.UrlAnalysisService - [url] similares de 'Colo / Consultado / Club' servidas desde BD
+2026-11-09 16:08:48.051 [999d4541] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 5 ms; total servido desde cache 8 ms
+2026-11-09 16:08:48.056 [999d4541] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=14 ms
+2026-11-09 16:09:51.190 [fe690d16] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 16:09:51.192 [fe690d16] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/Club_Social_y_Deportivo_Colo-Colo en 1 ms -> hit
+2026-11-09 16:09:51.196 [fe690d16] INFO  c.b.a.service.UrlAnalysisService - [url] similares de 'Colo / Consultado / Club' servidas desde BD
+2026-11-09 16:09:51.199 [fe690d16] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 5 ms; total servido desde cache 8 ms
+2026-11-09 16:09:51.202 [fe690d16] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=12 ms
+2026-11-09 16:10:11.324 [4837a308] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 16:10:11.326 [4837a308] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://www.espn.cl/futbol/equipo/resultados/_/id/2688/chi.colo_colo en 1 ms -> miss
+2026-11-09 16:10:16.609 [4837a308] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 5283 ms
+2026-11-09 16:10:16.610 [4837a308] INFO  c.b.a.service.UrlAnalysisService - [url] extracción Exa de https://www.espn.cl/futbol/equipo/resultados/_/id/2688/chi.colo_colo completada en 5284 ms
+2026-11-09 16:10:16.615 [4837a308] INFO  c.b.a.service.UrlAnalysisService - [url] fuente persistida en 5 ms
+2026-11-09 16:10:16.617 [4837a308] INFO  c.b.a.service.UrlAnalysisService - [url] similares de 'Colo / Finalizado / División' servidas desde BD
+2026-11-09 16:10:16.624 [4837a308] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 8 ms; total análisis 5299 ms
+2026-11-09 16:10:16.626 [4837a308] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=5302 ms
+2026-11-09 16:12:25.043 [e3af350c] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 16:12:25.045 [e3af350c] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://www.biobiochile.cl/especial/bbcl-investiga/noticias/articulos/2026/11/08/los-decretos-no-se-detuvieron-rabat-y-nueva-subsecretaria-bajan-pena-a-condenado-por-brutal-homicidio.shtml en 1 ms -> miss
+2026-11-09 16:12:29.498 [e3af350c] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 4452 ms
+2026-11-09 16:12:29.500 [e3af350c] INFO  c.b.a.service.UrlAnalysisService - [url] extracción Exa de https://www.biobiochile.cl/especial/bbcl-investiga/noticias/articulos/2026/11/08/los-decretos-no-se-detuvieron-rabat-y-nueva-subsecretaria-bajan-pena-a-condenado-por-brutal-homicidio.shtml completada en 4454 ms
+2026-11-09 16:12:29.504 [e3af350c] INFO  c.b.a.service.UrlAnalysisService - [url] fuente persistida en 4 ms
+2026-11-09 16:12:30.041 [e3af350c] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 534 ms
+2026-11-09 16:12:30.041 [e3af350c] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para 'Peter / Rabat / Decreto'
+2026-11-09 16:12:35.933 [e3af350c] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 5888 ms
+2026-11-09 16:12:41.036 [e3af350c] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 5095 ms
+2026-11-09 16:12:47.670 [e3af350c] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 6625 ms
+2026-11-09 16:12:52.764 [e3af350c] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 5087 ms
+2026-11-09 16:12:52.776 [e3af350c] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 23270 ms; total análisis 27732 ms
+2026-11-09 16:12:52.778 [e3af350c] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=27735 ms
+2026-11-09 16:19:35.558 [dc4b075b] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-09 16:19:35.561 [dc4b075b] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://www.lacuarta.com/chile/noticia/salio-libre-por-decreto-de-rabat-y-ahora-volvio-a-delinquir-caso-de-traficante-venezolano-agudiza-la-polemica/ en 2 ms -> miss
+2026-11-09 16:19:43.800 [dc4b075b] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 8239 ms
+2026-11-09 16:19:43.801 [dc4b075b] INFO  c.b.a.service.UrlAnalysisService - [url] extracción Exa de https://www.lacuarta.com/chile/noticia/salio-libre-por-decreto-de-rabat-y-ahora-volvio-a-delinquir-caso-de-traficante-venezolano-agudiza-la-polemica/ completada en 8240 ms
+2026-11-09 16:19:43.807 [dc4b075b] INFO  c.b.a.service.UrlAnalysisService - [url] fuente persistida en 6 ms
+2026-11-09 16:19:44.395 [dc4b075b] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 585 ms
+2026-11-09 16:19:44.396 [dc4b075b] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para 'Rabat / Venezolano / Decreto'
+2026-11-09 16:19:49.624 [dc4b075b] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 5227 ms
+2026-11-09 16:19:54.193 [dc4b075b] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 4560 ms
+2026-11-09 16:19:59.854 [dc4b075b] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 5651 ms
+2026-11-09 16:20:02.835 [dc4b075b] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 2973 ms
+2026-11-09 16:20:05.986 [dc4b075b] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 3141 ms
+2026-11-09 16:20:05.992 [dc4b075b] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 22184 ms; total análisis 30433 ms
+2026-11-09 16:20:05.994 [dc4b075b] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=30437 ms
+2026-11-09 16:21:00.615 [80a367f8] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/fuentes desde 0:0:0:0:0:0:0:1
+2026-11-09 16:21:00.624 [80a367f8] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/fuentes status=200 total=9 ms
