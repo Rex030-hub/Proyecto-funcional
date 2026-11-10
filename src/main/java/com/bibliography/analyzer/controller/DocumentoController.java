@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty; 
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -16,6 +16,7 @@ import java.nio.charset.StandardCharsets;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
+@ConditionalOnProperty(name = "app.modulo.pdf.enabled", havingValue = "true", matchIfMissing = true)  
 public class DocumentoController {
 
     private static final long MAX_BYTES = 25L * 1024 * 1024;

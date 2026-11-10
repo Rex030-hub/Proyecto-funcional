@@ -3,8 +3,10 @@ package com.bibliography.analyzer.service;
 import com.bibliography.analyzer.dominio.url.JsonMini;
 import com.bibliography.analyzer.dominio.url.TopicExtractor;
 import com.bibliography.analyzer.dominio.url.WebMetadata;
+import org.slf4j.Logger;                                                // <-- NUEVO
+import org.slf4j.LoggerFactory;                                       // <-- NUEVO
 import org.springframework.stereotype.Component;
-
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -18,7 +20,10 @@ import java.util.List;
 import java.util.Properties;
 
 @Component
+@ConditionalOnProperty(name = "app.modulo.url.enabled", havingValue = "true", matchIfMissing = true)
 public class ExaClient {
+
+    private static final Logger log = LoggerFactory.getLogger(ExaClient.class); // <-- NUEVO
 
     public static class ExaException extends RuntimeException {
         private final int statusCode;
@@ -95,7 +100,9 @@ public class ExaClient {
         return JsonMini.urlsFromResults(body);
     }
 
+    // ===== MÉTODO REEMPLAZADO: ahora loguea tiempo y status de cada llamada =====
     private String send(String url, String payload) throws IOException {
+        long t0 = System.currentTimeMillis();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .timeout(TIMEOUT_PETICION)
@@ -105,10 +112,16 @@ public class ExaClient {
                 .build();
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() == 200) return response.body();
+            long ms = System.currentTimeMillis() - t0;
+            if (response.statusCode() == 200) {
+                log.info("Exa {} respondió 200 en {} ms", url, ms);
+                return response.body();
+            }
+            log.warn("Exa {} respondió HTTP {} en {} ms", url, response.statusCode(), ms);
             throw new ExaException(response.statusCode(), response.body());
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
+            log.error("Petición a Exa {} interrumpida", url, e);
             throw new ExaException(0, "Petición interrumpida.");
         }
     }

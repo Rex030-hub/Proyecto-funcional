@@ -2,7 +2,7 @@ package com.bibliography.analyzer.repository;
 
 import com.bibliography.analyzer.dominio.url.WebMetadata;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,6 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
+@ConditionalOnProperty(name = "app.modulo.url.enabled", havingValue = "true", matchIfMissing = true)
 public class FuenteRepository {
 
     public static class DataBaseException extends RuntimeException {

@@ -9,13 +9,14 @@ import com.bibliography.analyzer.service.ExaClient;
 import com.bibliography.analyzer.service.UrlAnalysisService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty; 
 import java.net.http.HttpTimeoutException;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
+@ConditionalOnProperty(name = "app.modulo.url.enabled", havingValue = "true", matchIfMissing = true) 
 public class FuenteController {
 
     private final UrlAnalysisService service;
