@@ -1,4 +1,7 @@
 package com.bibliography.analyzer.dominio.url;
+import java.time.LocalDate;
+import java.time.Period;
+import java.lang.Math;
 
 public final class ScoreCalculator {
     private ScoreCalculator() {}
@@ -34,8 +37,15 @@ public final class ScoreCalculator {
     }
 
     public static int evaluarFecha(String publishedDate) {
-        if (publishedDate != null && !publishedDate.isEmpty()
-                && !publishedDate.equalsIgnoreCase("Fecha no especificada")) return 100;
+        if (publishedDate != null && !publishedDate.isEmpty() && !publishedDate.equalsIgnoreCase("Fecha no especificada")) {
+            LocalDate today = LocalDate.now();
+            LocalDate DatePublished = LocalDate.parse(publishedDate);
+            int Years = Period.between(today, DatePublished).getYears();
+            int Porcent = 70;
+            double Score = 100-Math.max(0, Math.min(100, Years*Porcent/100));
+            return (int) Score;
+        }
+
         return 25;
     }
 
