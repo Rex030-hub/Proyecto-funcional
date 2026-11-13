@@ -37,16 +37,33 @@ public final class ScoreCalculator {
     }
 
     public static int evaluarFecha(String publishedDate) {
-        if (publishedDate != null && !publishedDate.isEmpty() && !publishedDate.equalsIgnoreCase("Fecha no especificada")) {
-            LocalDate today = LocalDate.now();
-            LocalDate DatePublished = LocalDate.parse(publishedDate);
-            int Years = Period.between(today, DatePublished).getYears();
-            int Porcent = 70;
-            double Score = 100-Math.max(0, Math.min(100, Years*Porcent/100));
-            return (int) Score;
+        if (publishedDate == null || publishedDate.isEmpty() 
+                || publishedDate.equalsIgnoreCase("Fecha no especificada")) {
+            return 25;
         }
-
-        return 25;
+        
+        try {
+            // Intentar formato ISO completo primero (2024-05-01T00:00:00.000Z)
+            String normalized = publishedDate.trim();
+            if (normalized.contains("T")) {
+                // Extraer solo la parte de fecha antes de la T
+                normalized = normalized.split("T")[0];
+            }
+            
+            // Intentar parsear como YYYY-MM-DD
+            LocalDate datePublished = LocalDate.parse(normalized);
+            LocalDate today = LocalDate.now();
+            
+            // CORRECCIÓN: el Period debe ir de pasada a hoy, no al revés
+            int years = Period.between(datePublished, today).getYears();
+            int porcent = 70;
+            double score = 100 - Math.max(0, Math.min(100, years * porcent / 100));
+            return (int) score;
+            
+        } catch (Exception e) {
+            // Fecha mal formateada: devolver puntaje neutral
+            return 25;
+        }
     }
 
     public static int evaluarLongitud(String textContent) {

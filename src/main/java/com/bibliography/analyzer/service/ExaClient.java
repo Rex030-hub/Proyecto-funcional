@@ -1,6 +1,7 @@
 package com.bibliography.analyzer.service;
 
 import com.bibliography.analyzer.dominio.url.JsonMini;
+import com.bibliography.analyzer.dominio.url.ScoreCalculator;
 import com.bibliography.analyzer.dominio.url.TopicExtractor;
 import com.bibliography.analyzer.dominio.url.WebMetadata;
 import org.slf4j.Logger;                                                // <-- NUEVO
@@ -78,17 +79,23 @@ public class ExaClient {
         String title = JsonMini.field(body, "title");
         String author = JsonMini.field(body, "author");
         String publishedDate = JsonMini.field(body, "publishedDate");
-        String textContent = JsonMini.field(body, "text");
+        String textContent = JsonMini.field(body, "text");   // vive solo dentro de este método
         String topic = TopicExtractor.extractMainTopic(textContent, title);
         String domain = URI.create(targetUrl).getHost();
-        return new WebMetadata(
-                domain,
-                targetUrl,
-                title.isEmpty() ? "Sin título" : title,
-                (topic == null || topic.isEmpty()) ? "Sin Topico" : topic,
-                author.isEmpty() ? "Sin autor" : author,
-                publishedDate.isEmpty() ? "Fecha no especificada" : publishedDate,
-                textContent);
+
+        String titleNorm  = title.isEmpty() ? "Sin título" : title;
+        String topicNorm  = (topic == null || topic.isEmpty()) ? "Sin Topico" : topic;
+        String authorNorm = author.isEmpty() ? "Sin autor" : author;
+        String dateNorm   = publishedDate.isEmpty() ? "Fecha no especificada" : publishedDate;
+
+        // Derivados del texto: se calculan una vez y el texto se descarta al salir.
+        int wordCount = (textContent == null || textContent.isBlank())
+                ? 0
+                : textContent.trim().split("\\s+").length;
+        int score = ScoreCalculator.calcular(domain, authorNorm, dateNorm, textContent);
+
+        return new WebMetadata(domain, targetUrl, titleNorm, topicNorm,
+                authorNorm, dateNorm, wordCount, score);
     }
 
     public List<String> findSimilarPagesByTopic(String topic, int maxResults) throws IOException {

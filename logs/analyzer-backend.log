@@ -1,16 +1,276 @@
-2026-11-10 17:48:00.217 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 8672 (C:\Users\ialia\Proyecto-funcional\target\classes started by ialia in C:\Users\ialia\Proyecto-funcional)
-2026-11-10 17:48:00.227 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
-2026-11-10 17:48:00.782 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-11-10 17:48:00.792 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2026-11-10 17:48:00.793 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
-2026-11-10 17:48:00.833 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 573 ms
-2026-11-10 17:48:01.213 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-11-10 17:48:01.216 [] INFO  c.b.a.AnalyzerBackendApplication - Started AnalyzerBackendApplication in 1.286 seconds (process running for 1.587)
-2026-11-10 17:48:32.024 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-11-10 17:48:32.025 [] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-11-10 17:48:32.026 [] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2026-11-10 17:48:32.032 [0c793ff1] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/health desde 0:0:0:0:0:0:0:1
-2026-11-10 17:48:32.113 [0c793ff1] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/health status=200 total=82 ms
-2026-11-10 17:48:32.286 [58c0e7eb] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /favicon.ico desde 0:0:0:0:0:0:0:1
-2026-11-10 17:48:32.301 [58c0e7eb] WARN  c.b.a.c.GlobalExceptionHandler - Recurso no encontrado (404): No static resource favicon.ico for request '/favicon.ico'.
-2026-11-10 17:48:32.336 [58c0e7eb] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /favicon.ico status=404 total=50 ms
+2026-11-13 15:16:19.636 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 6972 (C:\Users\ialia\Desktop\rorro\Proyecto-funcional\target\classes started by ialia in C:\Users\ialia\Desktop\rorro\Proyecto-funcional)
+2026-11-13 15:16:19.642 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-13 15:16:20.213 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-13 15:16:20.225 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-13 15:16:20.225 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-13 15:16:20.264 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 584 ms
+2026-11-13 15:16:20.701 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-13 15:16:20.711 [] INFO  c.b.a.AnalyzerBackendApplication - Started AnalyzerBackendApplication in 1.387 seconds (process running for 1.641)
+2026-11-13 15:16:50.703 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-13 15:16:50.704 [] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-13 15:16:50.705 [] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-11-13 15:16:50.709 [0157a229] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-13 15:16:50.817 [0157a229] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://desarrolloweb.com/faq/caracter-contrabarra en 6 ms -> miss
+2026-11-13 15:16:53.393 [0157a229] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 2574 ms
+2026-11-13 15:16:53.396 [0157a229] INFO  c.b.a.service.UrlAnalysisService - [url] extracción Exa de https://desarrolloweb.com/faq/caracter-contrabarra completada en 2578 ms
+2026-11-13 15:16:53.428 [0157a229] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=500 total=2719 ms
+2026-11-13 15:26:06.351 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 16836 (C:\Users\ialia\Desktop\rorro\Proyecto-funcional\target\classes started by ialia in C:\Users\ialia\Desktop\rorro\Proyecto-funcional)
+2026-11-13 15:26:06.353 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-13 15:26:06.907 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-13 15:26:06.917 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-13 15:26:06.917 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-13 15:26:06.951 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 564 ms
+2026-11-13 15:26:07.330 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-13 15:26:07.334 [] INFO  c.b.a.AnalyzerBackendApplication - Started AnalyzerBackendApplication in 1.26 seconds (process running for 1.485)
+2026-11-13 15:26:11.635 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-13 15:26:11.636 [] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-13 15:26:11.637 [] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-11-13 15:26:11.644 [b99a7557] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-13 15:26:11.760 [b99a7557] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://desarrolloweb.com/faq/caracter-contrabarra en 5 ms -> miss
+2026-11-13 15:26:14.243 [b99a7557] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 2482 ms
+2026-11-13 15:26:14.246 [b99a7557] INFO  c.b.a.service.UrlAnalysisService - [url] extracción Exa de https://desarrolloweb.com/faq/caracter-contrabarra completada en 2486 ms
+2026-11-13 15:26:14.276 [b99a7557] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=500 total=2632 ms
+2026-11-13 15:30:42.291 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 18912 (C:\Users\ialia\Desktop\rorro\Proyecto-funcional\target\classes started by ialia in C:\Users\ialia\Desktop\rorro\Proyecto-funcional)
+2026-11-13 15:30:42.294 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-13 15:30:42.819 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-13 15:30:42.830 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-13 15:30:42.830 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-13 15:30:42.865 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 536 ms
+2026-11-13 15:30:43.249 [] WARN  o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-11-13 15:30:43.257 [] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-11-13 15:30:43.266 [] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2026-11-13 15:32:39.225 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 3216 (C:\Users\ialia\Desktop\rorro\Proyecto-funcional\target\classes started by ialia in C:\Users\ialia\Desktop\rorro\Proyecto-funcional)
+2026-11-13 15:32:39.227 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-13 15:32:39.847 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-13 15:32:39.859 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-13 15:32:39.860 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-13 15:32:39.900 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 631 ms
+2026-11-13 15:32:40.322 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-13 15:32:40.332 [] INFO  c.b.a.AnalyzerBackendApplication - Started AnalyzerBackendApplication in 1.439 seconds (process running for 1.703)
+2026-11-13 15:33:05.261 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-13 15:33:05.261 [] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-13 15:33:05.262 [] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-11-13 15:33:05.265 [e6c9f5b3] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-13 15:33:05.366 [e6c9f5b3] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://desarrolloweb.com/faq/caracter-contrabarra en 5 ms -> miss
+2026-11-13 15:33:08.130 [e6c9f5b3] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 2763 ms
+2026-11-13 15:33:08.132 [e6c9f5b3] INFO  c.b.a.service.UrlAnalysisService - [url] extracción Exa de https://desarrolloweb.com/faq/caracter-contrabarra completada en 2765 ms
+2026-11-13 15:33:08.138 [e6c9f5b3] INFO  c.b.a.service.UrlAnalysisService - [url] fuente persistida en 5 ms
+2026-11-13 15:33:08.533 [e6c9f5b3] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 391 ms
+2026-11-13 15:33:08.534 [e6c9f5b3] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para 'Caracteres / Especiales / Backslash'
+2026-11-13 15:33:12.565 [e6c9f5b3] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 4030 ms
+2026-11-13 15:33:16.799 [e6c9f5b3] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 4227 ms
+2026-11-13 15:33:20.438 [e6c9f5b3] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 3627 ms
+2026-11-13 15:33:24.298 [e6c9f5b3] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 3853 ms
+2026-11-13 15:33:27.504 [e6c9f5b3] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 3190 ms
+2026-11-13 15:33:27.513 [e6c9f5b3] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 19372 ms; total análisis 22152 ms
+2026-11-13 15:33:27.551 [e6c9f5b3] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=22286 ms
+2026-11-13 15:34:31.300 [bf2bf632] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-13 15:34:31.303 [bf2bf632] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://desarrolloweb.com/faq/caracter-contrabarra en 1 ms -> hit
+2026-11-13 15:34:31.530 [bf2bf632] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 225 ms
+2026-11-13 15:34:31.530 [bf2bf632] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para 'Caracteres / Especiales / Backslash'
+2026-11-13 15:34:31.535 [bf2bf632] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 230 ms; total servido desde cache 232 ms
+2026-11-13 15:34:31.537 [bf2bf632] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=237 ms
+2026-11-13 15:34:40.006 [30de3c41] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-13 15:34:40.008 [30de3c41] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://desarrolloweb.com/faq/caracter-contrabarra en 1 ms -> hit
+2026-11-13 15:34:40.200 [30de3c41] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 190 ms
+2026-11-13 15:34:40.200 [30de3c41] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para 'Caracteres / Especiales / Backslash'
+2026-11-13 15:34:40.205 [30de3c41] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 196 ms; total servido desde cache 198 ms
+2026-11-13 15:34:40.207 [30de3c41] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=201 ms
+2026-11-13 15:34:42.928 [2f1dbde5] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/fuentes desde 0:0:0:0:0:0:0:1
+2026-11-13 15:34:42.936 [2f1dbde5] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/fuentes status=200 total=8 ms
+2026-11-13 15:34:47.422 [1b990bc4] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/fuentes/1 desde 0:0:0:0:0:0:0:1
+2026-11-13 15:34:47.428 [1b990bc4] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/fuentes/1 status=200 total=6 ms
+2026-11-13 15:34:52.308 [fa4628ab] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/fuentes/1 desde 0:0:0:0:0:0:0:1
+2026-11-13 15:34:52.311 [fa4628ab] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/fuentes/1 status=200 total=3 ms
+2026-11-13 15:34:54.428 [ac8dc7c7] INFO  c.b.a.config.RequestLoggingFilter - INICIO DELETE /api/fuentes/1 desde 0:0:0:0:0:0:0:1
+2026-11-13 15:34:54.434 [ac8dc7c7] INFO  c.b.a.config.RequestLoggingFilter - FIN DELETE /api/fuentes/1 status=204 total=6 ms
+2026-11-13 15:34:58.958 [8f75bd02] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/fuentes desde 0:0:0:0:0:0:0:1
+2026-11-13 15:34:58.962 [8f75bd02] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/fuentes status=200 total=4 ms
+2026-11-13 15:34:59.887 [b8d2e82c] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/fuentes desde 0:0:0:0:0:0:0:1
+2026-11-13 15:34:59.890 [b8d2e82c] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/fuentes status=200 total=3 ms
+2026-11-13 15:35:06.004 [62320ed6] INFO  c.b.a.config.RequestLoggingFilter - INICIO DELETE /api/fuentes/2 desde 0:0:0:0:0:0:0:1
+2026-11-13 15:35:06.010 [62320ed6] INFO  c.b.a.config.RequestLoggingFilter - FIN DELETE /api/fuentes/2 status=204 total=6 ms
+2026-11-13 15:35:08.478 [b575d8b9] INFO  c.b.a.config.RequestLoggingFilter - INICIO DELETE /api/fuentes/3 desde 0:0:0:0:0:0:0:1
+2026-11-13 15:35:08.484 [b575d8b9] INFO  c.b.a.config.RequestLoggingFilter - FIN DELETE /api/fuentes/3 status=204 total=6 ms
+2026-11-13 15:35:11.092 [5badb659] INFO  c.b.a.config.RequestLoggingFilter - INICIO DELETE /api/fuentes/4 desde 0:0:0:0:0:0:0:1
+2026-11-13 15:35:11.098 [5badb659] INFO  c.b.a.config.RequestLoggingFilter - FIN DELETE /api/fuentes/4 status=204 total=6 ms
+2026-11-13 15:35:14.491 [eb1d26e0] INFO  c.b.a.config.RequestLoggingFilter - INICIO DELETE /api/fuentes/5 desde 0:0:0:0:0:0:0:1
+2026-11-13 15:35:14.497 [eb1d26e0] INFO  c.b.a.config.RequestLoggingFilter - FIN DELETE /api/fuentes/5 status=204 total=6 ms
+2026-11-13 15:35:43.737 [8b4866d2] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-documento desde 0:0:0:0:0:0:0:1
+2026-11-13 15:35:44.107 [8b4866d2] INFO  c.b.analyzer.service.AnalisisService - [pdf:aa14274c] extracción y limpieza en 353 ms (1981 palabras)
+2026-11-13 15:35:44.131 [8b4866d2] INFO  c.b.analyzer.service.AnalisisService - [pdf:aa14274c] pilares y testigos calculados en 19 ms
+2026-11-13 15:35:44.135 [8b4866d2] INFO  c.b.analyzer.service.AnalisisService - [aa14274c] IA1.pdf 81KB 379ms === CALIBRACIÓN === Anclaje empírico=100 Complejidad sintáctica=95 Burstiness=100 Voz autoral=100 Intensificadores vacíos=0 [T]Repetición de bigramas=0 [T]Conectores vacíos=0 [T]Uniformidad de párrafos=0 | texto=88 meta=8.0 | FINAL=96
+2026-11-13 15:35:44.145 [8b4866d2] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-documento status=200 total=408 ms
+2026-11-13 15:35:55.370 [e1c0d3bd] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-documento desde 0:0:0:0:0:0:0:1
+2026-11-13 15:35:55.381 [e1c0d3bd] INFO  c.b.analyzer.service.AnalisisService - [pdf:e487ef48] extracción y limpieza en 5 ms (0 palabras)
+2026-11-13 15:35:55.383 [e1c0d3bd] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-documento status=422 total=13 ms
+2026-11-13 15:36:01.449 [f214cdb2] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-documento desde 0:0:0:0:0:0:0:1
+2026-11-13 15:36:01.456 [f214cdb2] INFO  c.b.analyzer.service.AnalisisService - [pdf:3e6e133a] extracción y limpieza en 3 ms (0 palabras)
+2026-11-13 15:36:01.458 [f214cdb2] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-documento status=422 total=9 ms
+2026-11-13 15:36:05.160 [28c53826] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-documento desde 0:0:0:0:0:0:0:1
+2026-11-13 15:36:05.214 [28c53826] INFO  c.b.analyzer.service.AnalisisService - [pdf:fed5784b] extracción y limpieza en 47 ms (671 palabras)
+2026-11-13 15:36:05.216 [28c53826] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-documento status=422 total=56 ms
+2026-11-13 15:38:09.579 [d4965781] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-documento desde 127.0.0.1
+2026-11-13 15:38:09.634 [d4965781] INFO  c.b.analyzer.service.AnalisisService - [pdf:6e4cf369] extracción y limpieza en 38 ms (573 palabras)
+2026-11-13 15:38:09.639 [d4965781] INFO  c.b.analyzer.service.AnalisisService - [pdf:6e4cf369] pilares y testigos calculados en 4 ms
+2026-11-13 15:38:09.639 [d4965781] INFO  c.b.analyzer.service.AnalisisService - [6e4cf369] Informe_tecnico_IA.pdf 188KB 43ms === CALIBRACIÓN === Anclaje empírico=0 Complejidad sintáctica=0 Burstiness=0 Voz autoral=81 Intensificadores vacíos=0 [T]Repetición de bigramas=0 [T]Conectores vacíos=0 [T]Uniformidad de párrafos=52 | texto=9 meta=0.0 | FINAL=9
+2026-11-13 15:38:09.641 [d4965781] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-documento status=200 total=62 ms
+2026-11-13 15:47:31.429 [ac1fdcaf] INFO  c.b.a.config.RequestLoggingFilter - INICIO OPTIONS /api/analizar-url desde 127.0.0.1
+2026-11-13 15:47:31.433 [ac1fdcaf] INFO  c.b.a.config.RequestLoggingFilter - FIN OPTIONS /api/analizar-url status=200 total=4 ms
+2026-11-13 15:47:31.435 [8e184001] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 127.0.0.1
+2026-11-13 15:47:31.438 [8e184001] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://www.youtube.com/ en 1 ms -> miss
+2026-11-13 15:47:33.215 [8e184001] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 1777 ms
+2026-11-13 15:47:33.216 [8e184001] INFO  c.b.a.service.UrlAnalysisService - [url] extracción Exa de https://www.youtube.com/ completada en 1778 ms
+2026-11-13 15:47:33.220 [8e184001] INFO  c.b.a.service.UrlAnalysisService - [url] fuente persistida en 4 ms
+2026-11-13 15:47:33.222 [8e184001] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 0 URLs similares para 'Sin Topico'
+2026-11-13 15:47:33.222 [8e184001] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 1 ms; total análisis 1785 ms
+2026-11-13 15:47:33.224 [8e184001] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=1789 ms
+2026-11-13 15:48:09.971 [5ae7b37d] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 127.0.0.1
+2026-11-13 15:48:09.973 [5ae7b37d] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/League_of_Legends en 1 ms -> miss
+2026-11-13 15:48:16.706 [5ae7b37d] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 6732 ms
+2026-11-13 15:48:16.720 [5ae7b37d] INFO  c.b.a.service.UrlAnalysisService - [url] extracción Exa de https://es.wikipedia.org/wiki/League_of_Legends completada en 6746 ms
+2026-11-13 15:48:16.725 [5ae7b37d] INFO  c.b.a.service.UrlAnalysisService - [url] fuente persistida en 5 ms
+2026-11-13 15:48:17.068 [5ae7b37d] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 341 ms
+2026-11-13 15:48:17.068 [5ae7b37d] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para '2020 / League / Legends'
+2026-11-13 15:48:20.181 [5ae7b37d] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 3112 ms
+2026-11-13 15:48:25.736 [5ae7b37d] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 5548 ms
+2026-11-13 15:48:28.876 [5ae7b37d] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 3134 ms
+2026-11-13 15:48:28.880 [5ae7b37d] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=502 total=18909 ms
+2026-11-13 15:49:23.437 [f1b8b927] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/fuentes desde 0:0:0:0:0:0:0:1
+2026-11-13 15:49:23.440 [f1b8b927] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/fuentes status=200 total=3 ms
+2026-11-13 15:51:30.385 [] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-13 15:51:30.389 [] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-13 15:52:21.050 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 6656 (C:\Users\ialia\Desktop\rorro\Proyecto-funcional\target\classes started by ialia in C:\Users\ialia\Desktop\rorro\Proyecto-funcional)
+2026-11-13 15:52:21.052 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-13 15:52:21.685 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-13 15:52:21.698 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-13 15:52:21.698 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-13 15:52:21.740 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 649 ms
+2026-11-13 15:52:22.174 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-13 15:52:22.177 [] INFO  c.b.a.AnalyzerBackendApplication - Started AnalyzerBackendApplication in 1.459 seconds (process running for 1.728)
+2026-11-13 15:52:29.058 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-13 15:52:29.058 [] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-13 15:52:29.059 [] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-11-13 15:52:29.063 [51ceaca7] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 127.0.0.1
+2026-11-13 15:52:29.194 [51ceaca7] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/League_of_Legends en 5 ms -> hit
+2026-11-13 15:52:29.598 [51ceaca7] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 399 ms
+2026-11-13 15:52:29.599 [51ceaca7] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para '2020 / League / Legends'
+2026-11-13 15:52:35.093 [51ceaca7] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 5490 ms
+2026-11-13 15:52:37.770 [51ceaca7] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 2659 ms
+2026-11-13 15:52:41.341 [51ceaca7] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 3563 ms
+2026-11-13 15:52:41.348 [51ceaca7] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 12152 ms; total servido desde cache 12159 ms
+2026-11-13 15:52:41.377 [51ceaca7] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=12314 ms
+2026-11-13 15:54:21.229 [a2155283] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 127.0.0.1
+2026-11-13 15:54:21.232 [a2155283] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://www.elmundo.es/yodona/vida-saludable/2025/06/29/684fee4ee4d4d842718b458c.html en 1 ms -> miss
+2026-11-13 15:54:24.521 [a2155283] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 3288 ms
+2026-11-13 15:54:24.523 [a2155283] INFO  c.b.a.service.UrlAnalysisService - [url] extracción Exa de https://www.elmundo.es/yodona/vida-saludable/2025/06/29/684fee4ee4d4d842718b458c.html completada en 3290 ms
+2026-11-13 15:54:24.528 [a2155283] INFO  c.b.a.service.UrlAnalysisService - [url] fuente persistida en 4 ms
+2026-11-13 15:54:24.897 [a2155283] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 366 ms
+2026-11-13 15:54:24.898 [a2155283] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para 'Postura / Cuerpo / Unos'
+2026-11-13 15:54:27.320 [a2155283] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 2421 ms
+2026-11-13 15:54:33.442 [a2155283] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 6115 ms
+2026-11-13 15:54:36.881 [a2155283] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 3429 ms
+2026-11-13 15:54:39.200 [a2155283] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 2312 ms
+2026-11-13 15:54:45.506 [a2155283] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 6291 ms
+2026-11-13 15:54:45.528 [a2155283] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 20998 ms; total análisis 24297 ms
+2026-11-13 15:54:45.530 [a2155283] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=24301 ms
+2026-11-13 15:55:29.749 [ddb60b86] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-documento desde 127.0.0.1
+2026-11-13 15:55:30.104 [ddb60b86] INFO  c.b.analyzer.service.AnalisisService - [pdf:d2dc6eae] extracción y limpieza en 332 ms (1803 palabras)
+2026-11-13 15:55:30.120 [ddb60b86] INFO  c.b.analyzer.service.AnalisisService - [pdf:d2dc6eae] pilares y testigos calculados en 13 ms
+2026-11-13 15:55:30.127 [ddb60b86] INFO  c.b.analyzer.service.AnalisisService - [d2dc6eae] Informe_tecnico_IA2.pdf 40KB 354ms === CALIBRACIÓN === Anclaje empírico=100 Complejidad sintáctica=0 Burstiness=100 Voz autoral=100 Intensificadores vacíos=0 [T]Repetición de bigramas=0 [T]Conectores vacíos=0 [T]Uniformidad de párrafos=0 | texto=63 meta=10.0 | FINAL=73
+2026-11-13 15:55:30.138 [ddb60b86] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-documento status=200 total=389 ms
+2026-11-13 15:58:17.774 [ec0752f2] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 127.0.0.1
+2026-11-13 15:58:17.777 [ec0752f2] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://www.elmundo.es/yodona/vida-saludable/2025/06/29/684fee4ee4d4d842718b458c.html en 1 ms -> hit
+2026-11-13 15:58:18.004 [ec0752f2] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 225 ms
+2026-11-13 15:58:18.004 [ec0752f2] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para 'Postura / Cuerpo / Unos'
+2026-11-13 15:58:18.008 [ec0752f2] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 229 ms; total servido desde cache 232 ms
+2026-11-13 15:58:18.010 [ec0752f2] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=236 ms
+2026-11-13 16:01:12.988 [] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-13 16:01:12.993 [] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-13 16:05:53.229 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.2 with PID 13512 (C:\Users\ialia\Desktop\rorro\Proyecto-funcional\target\classes started by ialia in C:\Users\ialia\Desktop\rorro\Proyecto-funcional)
+2026-11-13 16:05:53.231 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-13 16:05:53.944 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-13 16:05:53.958 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-13 16:05:53.958 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-13 16:05:54.005 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 727 ms
+2026-11-13 16:05:54.522 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-13 16:05:54.526 [] INFO  c.b.a.AnalyzerBackendApplication - Started AnalyzerBackendApplication in 1.711 seconds (process running for 2.052)
+2026-11-13 16:06:08.016 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-13 16:06:08.016 [] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-13 16:06:08.017 [] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-11-13 16:06:08.021 [263487ec] INFO  c.b.a.config.RequestLoggingFilter - INICIO OPTIONS /api/analizar-url desde 127.0.0.1
+2026-11-13 16:06:08.045 [263487ec] INFO  c.b.a.config.RequestLoggingFilter - FIN OPTIONS /api/analizar-url status=200 total=24 ms
+2026-11-13 16:06:08.049 [a034d2a7] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 127.0.0.1
+2026-11-13 16:06:08.129 [a034d2a7] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/League_of_Legends en 5 ms -> hit
+2026-11-13 16:06:08.699 [a034d2a7] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 566 ms
+2026-11-13 16:06:08.700 [a034d2a7] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para '2020 / League / Legends'
+2026-11-13 16:06:08.712 [a034d2a7] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 581 ms; total servido desde cache 588 ms
+2026-11-13 16:06:08.743 [a034d2a7] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=694 ms
+2026-11-13 16:12:47.289 [522b488d] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 127.0.0.1
+2026-11-13 16:12:47.292 [522b488d] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/League_of_Legends en 1 ms -> hit
+2026-11-13 16:12:47.537 [522b488d] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 243 ms
+2026-11-13 16:12:47.538 [522b488d] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para '2020 / League / Legends'
+2026-11-13 16:12:47.543 [522b488d] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 250 ms; total servido desde cache 252 ms
+2026-11-13 16:12:47.545 [522b488d] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=256 ms
+2026-11-13 16:13:25.612 [163f84a3] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 127.0.0.1
+2026-11-13 16:13:25.615 [163f84a3] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/League_of_Legends en 1 ms -> hit
+2026-11-13 16:13:25.868 [163f84a3] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 251 ms
+2026-11-13 16:13:25.868 [163f84a3] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para '2020 / League / Legends'
+2026-11-13 16:13:25.872 [163f84a3] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 256 ms; total servido desde cache 258 ms
+2026-11-13 16:13:25.873 [163f84a3] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=261 ms
+2026-11-13 16:17:57.504 [964f7c6c] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 127.0.0.1
+2026-11-13 16:17:57.507 [964f7c6c] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/League_of_Legends en 1 ms -> hit
+2026-11-13 16:17:57.737 [964f7c6c] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 228 ms
+2026-11-13 16:17:57.738 [964f7c6c] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para '2020 / League / Legends'
+2026-11-13 16:17:57.743 [964f7c6c] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 235 ms; total servido desde cache 237 ms
+2026-11-13 16:17:57.744 [964f7c6c] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=240 ms
+2026-11-13 16:18:21.037 [18d48ad7] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 127.0.0.1
+2026-11-13 16:18:21.040 [18d48ad7] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/League_of_Legends en 2 ms -> hit
+2026-11-13 16:18:21.245 [18d48ad7] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 203 ms
+2026-11-13 16:18:21.245 [18d48ad7] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para '2020 / League / Legends'
+2026-11-13 16:18:21.250 [18d48ad7] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 209 ms; total servido desde cache 212 ms
+2026-11-13 16:18:21.252 [18d48ad7] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=215 ms
+2026-11-13 20:44:57.697 [] INFO  c.b.a.AnalyzerBackendApplication - Starting AnalyzerBackendApplication using Java 25.0.5 with PID 21932 (C:\Users\HP ProBook\Desktop\Codificación\Codigos visual\Proyecto-funcional\target\classes started by HP ProBook in C:\Users\HP ProBook\Desktop\Codificación\Codigos visual\Proyecto-funcional)
+2026-11-13 20:44:57.701 [] INFO  c.b.a.AnalyzerBackendApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-13 20:44:58.992 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-13 20:44:59.015 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-13 20:44:59.016 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-13 20:44:59.153 [] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1373 ms
+2026-11-13 20:45:00.211 [] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-13 20:45:00.218 [] INFO  c.b.a.AnalyzerBackendApplication - Started AnalyzerBackendApplication in 3.153 seconds (process running for 3.642)
+2026-11-13 20:46:28.563 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-13 20:46:28.565 [] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-13 20:46:28.567 [] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-11-13 20:46:28.573 [f13504e8] INFO  c.b.a.config.RequestLoggingFilter - INICIO GET /api/fuentes desde 0:0:0:0:0:0:0:1
+2026-11-13 20:46:28.775 [f13504e8] INFO  c.b.a.config.RequestLoggingFilter - FIN GET /api/fuentes status=200 total=202 ms
+2026-11-13 20:48:32.456 [72ef8f34] INFO  c.b.a.config.RequestLoggingFilter - INICIO POST /api/analizar-url desde 0:0:0:0:0:0:0:1
+2026-11-13 20:48:32.524 [72ef8f34] INFO  c.b.a.service.UrlAnalysisService - [url] consulta de caché para https://es.wikipedia.org/wiki/Dioses_ol%C3%ADmpicos en 1 ms -> miss
+2026-11-13 20:48:42.915 [72ef8f34] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 10389 ms
+2026-11-13 20:48:42.996 [72ef8f34] INFO  c.b.a.service.UrlAnalysisService - [url] extracción Exa de https://es.wikipedia.org/wiki/Dioses_ol%C3%ADmpicos completada en 10471 ms
+2026-11-13 20:48:43.004 [72ef8f34] INFO  c.b.a.service.UrlAnalysisService - [url] fuente persistida en 8 ms
+2026-11-13 20:48:43.453 [72ef8f34] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/search respondió 200 en 443 ms
+2026-11-13 20:48:43.454 [72ef8f34] INFO  c.b.a.service.UrlAnalysisService - [url] Exa devolvió 5 URLs similares para 'Dioses / Zeus / Ilíada'
+2026-11-13 20:48:47.119 [72ef8f34] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 3663 ms
+2026-11-13 20:48:50.771 [72ef8f34] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 3631 ms
+2026-11-13 20:48:55.641 [72ef8f34] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 4848 ms
+2026-11-13 20:48:58.652 [72ef8f34] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 2966 ms
+2026-11-13 20:49:06.404 [72ef8f34] INFO  c.b.analyzer.service.ExaClient - Exa https://api.exa.ai/contents respondió 200 en 7711 ms
+2026-11-13 20:49:06.414 [72ef8f34] INFO  c.b.a.service.UrlAnalysisService - [url] relacionadas resueltas en 23407 ms; total análisis 33891 ms
+2026-11-13 20:49:06.423 [72ef8f34] INFO  c.b.a.config.RequestLoggingFilter - FIN POST /api/analizar-url status=200 total=33967 ms
+2026-11-13 20:56:31.749 [] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-13 20:56:31.813 [] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete

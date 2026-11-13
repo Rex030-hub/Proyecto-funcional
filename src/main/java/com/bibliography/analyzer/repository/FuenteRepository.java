@@ -3,6 +3,7 @@ package com.bibliography.analyzer.repository;
 import com.bibliography.analyzer.dominio.url.WebMetadata;
 import org.springframework.stereotype.Repository;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,8 +24,14 @@ public class FuenteRepository {
         public DataBaseException(String mensaje, SQLException causa) { super(mensaje, causa); }
     }
 
+    // ✅ FuenteRow actualizado: sin textContent, con wordCount y score
     public record FuenteRow(long id, String url, String domain, String title, String topic,
-                            String author, String publishedDate, String textContent, String createdAt) {}
+                            String author, String publishedDate, int wordCount, int score,
+                            String createdAt) {}
+
+    // ✅ Lista única de columnas para todos los SELECT
+    private static final String COLUMNAS =
+            "id, url, domain, title, author, published_date, topic, word_count, score, created_at";
 
     private final String dbUrl;
 
@@ -37,7 +44,7 @@ public class FuenteRepository {
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {
-            throw new IllegalStateException("Driver JDBC de SQLite no encontrado (revisa la dependencia sqlite-jdbc del pom).", e);
+            throw new IllegalStateException("Driver JDBC de SQLite no encontrado.", e);
         }
         initSchema();
     }
@@ -46,6 +53,7 @@ public class FuenteRepository {
         return DriverManager.getConnection(dbUrl);
     }
 
+    // ✅ DDL corregido: published_date TEXT, word_count INTEGER, score INTEGER
     private void initSchema() {
         String sql = "CREATE TABLE IF NOT EXISTS web_metadata ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -54,8 +62,9 @@ public class FuenteRepository {
                 + "title TEXT, "
                 + "author TEXT, "
                 + "published_date TEXT, "
-                + "text_content TEXT, "
+                + "word_count INTEGER, "
                 + "topic TEXT, "
+                + "score INTEGER, "
                 + "created_at DATETIME DEFAULT CURRENT_TIMESTAMP);";
         try (Connection conn = getConnection(); Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
@@ -75,29 +84,31 @@ public class FuenteRepository {
         }
     }
 
+    // ✅ save() corregido: usa wordCount y score de WebMetadata
     public void save(WebMetadata m) {
-        String sql = "INSERT INTO web_metadata (url, domain, title, author, published_date, text_content, topic) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?) "
+        String sql = "INSERT INTO web_metadata (url, domain, title, author, published_date, word_count, topic, score) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?) "
                 + "ON CONFLICT(url) DO UPDATE SET title = excluded.title, author = excluded.author, "
-                + "published_date = excluded.published_date, text_content = excluded.text_content, "
-                + "topic = excluded.topic, created_at = CURRENT_TIMESTAMP";
+                + "published_date = excluded.published_date, word_count = excluded.word_count, "
+                + "topic = excluded.topic, score = excluded.score, created_at = CURRENT_TIMESTAMP";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, m.url());
             ps.setString(2, m.domain());
             ps.setString(3, m.title());
             ps.setString(4, m.author());
             ps.setString(5, m.publishedDate());
-            ps.setString(6, m.textContent());
+            ps.setInt(6, m.wordCount());
             ps.setString(7, m.topic());
+            ps.setInt(8, m.score());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new DataBaseException("Error al guardar metadatos.", e);
         }
     }
 
+    // ✅ Todos los SELECT usan la constante COLUMNAS
     public Optional<FuenteRow> findByUrl(String url) {
-        String sql = "SELECT id, url, domain, title, author, published_date, text_content, topic, created_at "
-                + "FROM web_metadata WHERE url = ?";
+        String sql = "SELECT " + COLUMNAS + " FROM web_metadata WHERE url = ?";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, url);
             ResultSet rs = ps.executeQuery();
@@ -109,8 +120,7 @@ public class FuenteRepository {
     }
 
     public Optional<FuenteRow> findById(long id) {
-        String sql = "SELECT id, url, domain, title, author, published_date, text_content, topic, created_at "
-                + "FROM web_metadata WHERE id = ?";
+        String sql = "SELECT " + COLUMNAS + " FROM web_metadata WHERE id = ?";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
@@ -123,8 +133,7 @@ public class FuenteRepository {
 
     public List<FuenteRow> findAll() {
         List<FuenteRow> out = new ArrayList<>();
-        String sql = "SELECT id, url, domain, title, author, published_date, text_content, topic, created_at "
-                + "FROM web_metadata ORDER BY id";
+        String sql = "SELECT " + COLUMNAS + " FROM web_metadata ORDER BY id";
         try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -192,8 +201,7 @@ public class FuenteRepository {
         if (topic == null || topic.isBlank() || limit <= 0) return out;
         List<String> keywords = keywords(topic);
         if (keywords.isEmpty()) return out;
-        StringBuilder sql = new StringBuilder(
-            "SELECT id, url, domain, title, author, published_date, text_content, topic, created_at FROM web_metadata WHERE (");
+        StringBuilder sql = new StringBuilder("SELECT " + COLUMNAS + " FROM web_metadata WHERE (");
         for (int i = 0; i < keywords.size(); i++) {
             if (i > 0) sql.append(" OR ");
             sql.append("LOWER(topic) LIKE LOWER(?)");
@@ -222,6 +230,7 @@ public class FuenteRepository {
                 .collect(Collectors.toList());
     }
 
+    // ✅ map() corregido: lee word_count y score como INT
     private static FuenteRow map(ResultSet rs) throws SQLException {
         return new FuenteRow(
                 rs.getLong("id"),
@@ -231,7 +240,8 @@ public class FuenteRepository {
                 rs.getString("topic"),
                 rs.getString("author"),
                 rs.getString("published_date"),
-                rs.getString("text_content"),
+                rs.getInt("word_count"),
+                rs.getInt("score"),
                 rs.getString("created_at"));
     }
 }

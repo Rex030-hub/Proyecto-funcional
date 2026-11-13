@@ -119,11 +119,13 @@ public class UrlAnalysisService {
 
     public FuenteDatos toDatos(FuenteRow r) {
         WebMetadata m = new WebMetadata(r.domain(), r.url(), r.title(), r.topic(),
-                r.author(), r.publishedDate(), r.textContent());
+                r.author(), r.publishedDate(), r.wordCount(), r.score());
         return new FuenteDatos(
                 r.id(), r.url(), r.domain(), r.title(), r.author(), r.publishedDate(), r.topic(),
-                ScoreCalculator.calcular(r.domain(), r.author(), r.publishedDate(), r.textContent()),
-                ApaFormatter.format(m), r.createdAt());
+                r.score(),               // puntaje PERSISTIDO: ya no se recalcula en lectura
+                ApaFormatter.format(m),  // APA RECALCULADO: solo necesita metadatos guardados
+                r.wordCount(),
+                r.createdAt());
     }
 
     public List<FuenteDatos> listar() {
