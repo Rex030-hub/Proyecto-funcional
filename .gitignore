@@ -30,8 +30,8 @@ build/
 !**/src/test/**/build/
 
 
-.vscode/
-.logs/
+vscode/
+logs/
 ### EXA API KEY ###
 config.properties
 .env
