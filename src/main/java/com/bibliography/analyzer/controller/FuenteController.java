@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty; 
 import java.net.http.HttpTimeoutException;
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api")
@@ -20,6 +22,9 @@ import java.util.Optional;
 public class FuenteController {
 
     private final UrlAnalysisService service;
+    private static final Logger log = LoggerFactory.getLogger(FuenteController.class);
+    private static final String MENSAJE_INTERNO =
+            "Error interno del servidor. Intenta nuevamente en unos minutos.";
 
     public FuenteController(UrlAnalysisService service) {
         this.service = service;
@@ -30,19 +35,25 @@ public class FuenteController {
         try {
             return ResponseEntity.ok(RespuestaApi.ok(service.analizar(request == null ? null : request.url())));
         } catch (IllegalArgumentException e) {
+            // Error del usuario: mensaje específico OK
             return ResponseEntity.status(400).body(RespuestaApi.error(e.getMessage()));
         } catch (HttpTimeoutException e) {
+            log.error("Timeout consultando el motor de búsqueda externo", e);
             return ResponseEntity.status(504).body(RespuestaApi.error(
                     "Tiempo de espera agotado al consultar el motor de búsqueda externo."));
         } catch (ExaClient.ExaException e) {
-            return ResponseEntity.status(502).body(RespuestaApi.error(e.getMessage()));
-        } catch (FuenteRepository.DataBaseException e) {
-            return ResponseEntity.status(500).body(RespuestaApi.error("Error de base de datos: " + e.getMessage()));
-        } catch (IllegalStateException e) {
-            return ResponseEntity.status(500).body(RespuestaApi.error(e.getMessage()));
-        } catch (Exception e) {
+            log.error("El motor de búsqueda externo falló: HTTP {}", e.statusCode(), e);
             return ResponseEntity.status(502).body(RespuestaApi.error(
-                    "No se pudo contactar al motor de búsqueda externo o la red falló durante el análisis."));
+                    "El motor de búsqueda externo no está disponible en este momento."));
+        } catch (FuenteRepository.DataBaseException e) {
+            log.error("Error de base de datos en analizar-url", e);
+            return ResponseEntity.status(500).body(RespuestaApi.error(MENSAJE_INTERNO));
+        } catch (IllegalStateException e) {
+            log.error("Configuración interna inválida (claves/estado)", e);
+            return ResponseEntity.status(500).body(RespuestaApi.error(MENSAJE_INTERNO));
+        } catch (Exception e) {
+            log.error("Error no controlado en analizar-url", e);
+            return ResponseEntity.status(502).body(RespuestaApi.error(MENSAJE_INTERNO));
         }
     }
 
