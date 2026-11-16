@@ -195,7 +195,7 @@ Verificación rápida:
 curl http://localhost:8080/api/health
 # {"status":"UP","servicio":"analyzer-backend","moduloPdf":"true","moduloUrl":"true"}
 ```
-```
+
 ### Frontend
 
 El sitio es estático: basta con servirlo desde cualquier servidor local (por ejemplo *Live Server* de VS Code).
