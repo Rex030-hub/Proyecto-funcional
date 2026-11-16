@@ -21,6 +21,16 @@ Evalúa la confiabilidad de fuentes web, detecta patrones compatibles con genera
 </div>
 
 ---
+## Integrantes
+  ### 1. Rodrigo Ayelef
+  #### Usuario Github: 
+     Rex030-hub
+  ### 2. Felipe Bravo
+  #### Usuario Github:
+    ndlr423 
+  ### 3. Ignacio Aliaga
+  #### Usuario Github:
+    Ialiaga-pin
 
 
 ##  Descripción
