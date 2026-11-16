@@ -23,7 +23,7 @@ Evalúa la confiabilidad de fuentes web, detecta patrones compatibles con genera
 ---
 
 
-## 📖 Descripción
+##  Descripción
 
 **Bibliography Search** es una plataforma web que asiste a estudiantes e investigadores en la evaluación crítica de sus fuentes. Se presenta como un *libro de análisis* de cuatro páginas: dos dedicadas al análisis (URL y PDF) y dos a las instrucciones de uso, más un módulo de cumplimientos normativos.
 
@@ -38,7 +38,7 @@ Ambas se comunican exclusivamente por HTTP/JSON bajo un contrato uniforme de res
 
 
 
-## 🏗 Arquitectura
+##  Arquitectura
 
 ```
 ┌──────────────────────┐        HTTPS / JSON        ┌────────────────────────┐
@@ -72,7 +72,7 @@ Los módulos pueden activarse o desactivarse de forma independiente mediante `ap
 
 ---
 
-## 🧰 Stack tecnológico
+##  Stack tecnológico
 
 **Backend**
 - Java 25 · Spring Boot 4.1.1 · Maven (wrapper incluido)
@@ -93,7 +93,7 @@ Los módulos pueden activarse o desactivarse de forma independiente mediante `ap
 - Docker multi-stage sobre Eclipse Temurin 25
 
 
-## 🔌 API REST
+##  API REST
 
 **Base URL:** `https://<tu-servicio>.onrender.com`
 
@@ -134,7 +134,7 @@ Las fechas se almacenan como texto porque la fuente externa entrega formatos het
 
 ---
 
-## 🔐 Seguridad
+##  Seguridad
 
 | Medida | Implementación |
 |---|---|
@@ -152,7 +152,7 @@ Las fechas se almacenan como texto porque la fuente externa entrega formatos het
 
 ---
 
-## 💻 Instalación local
+##  Instalación local
 
 ### Requisitos
 
@@ -204,7 +204,7 @@ El frontend consume la API del backend por HTTPS. El backend autoriza el origen 
 
 ---
 
-## 🧪 Pruebas
+##  Pruebas
 
 El repositorio incluye una colección de Postman en `docs/demo-api-rest.postman_collection.json` que cubre:
 
@@ -247,7 +247,7 @@ El uso de la **API de Exa** se rige por sus propios términos de servicio; este 
 
 ---
 
-## 👥 Autores
+##  Autores
 
 | Nombre | GitHub |
 |---|---|
