@@ -236,13 +236,6 @@ El repositorio incluye una colección de Postman en `docs/demo-api-rest.postman_
 Antes de importar la colección, define la variable `baseUrl` y reemplaza las rutas de los archivos PDF por rutas locales válidas.
 
 
----
-
-## 📄 Licencia
-
-
-En resumen: se permite el uso, la copia, la modificación, la fusión, la publicación, la distribución, la sublicencia y la venta de copias del software, siempre que se conserve el aviso de copyright y el texto de la licencia. El software se entrega **"tal cual", sin garantía de ningún tipo**.
-
 ### Licencias de terceros
 
 | Componente | Licencia |
