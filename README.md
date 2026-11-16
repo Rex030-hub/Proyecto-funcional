@@ -195,7 +195,7 @@ Verificación rápida:
 curl http://localhost:8080/api/health
 # {"status":"UP","servicio":"analyzer-backend","moduloPdf":"true","moduloUrl":"true"}
 ```
-
+```
 ### Frontend
 
 El sitio es estático: basta con servirlo desde cualquier servidor local (por ejemplo *Live Server* de VS Code).
@@ -207,7 +207,7 @@ window.APP_CONFIG = Object.freeze({
     API_BASE_URL: 'http://127.0.0.1:8080'
 });
 ---
-
+```
 ### Comunicación entre ambos
 
 El frontend consume la API del backend por HTTPS. El backend autoriza el origen de Vercel mediante `APP_CORS_ORIGINS`. No existe acoplamiento de despliegue: cada pieza puede actualizarse de forma independiente mientras se respete el contrato de la API.
