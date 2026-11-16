@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📚 Bibliography Search
+#  Bibliography Search
 
 **El libro del análisis**
 
