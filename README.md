@@ -10,14 +10,5 @@
   ### 3. Ignacio Aliaga
   #### Usuario Github:
     Ialiaga-pin
-## Enlaces
-### Enlace al prototipo
-#### Enlace Documentación
-<a href="https://docs.google.com/document/d/1SEmQSEQg7Sd1JMmSvHsdlzNDRYcmYorzM89TR2mXTTY/edit?usp=sharing">link documentación</a>
-#### Enlace Presentación
-<a href="https://canva.link/0bdi94spsrea4tw">link Presentación</a>
-#### Enlace Prototipo
-<a href="https://bibliographic-search.vercel.app/">link Presentación</a>
-## Considerar 
-FrontEnd contiene lo siguiente: index, css(base, book, modal, navigation), js(app, book, modal, navigation, url-analizer, api-config). 
-Los otros archivos son un avance de un BackEnd **(No considerar)**.
+
+
