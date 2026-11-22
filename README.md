@@ -105,7 +105,7 @@ Los módulos pueden activarse o desactivarse de forma independiente mediante `ap
 
 ##  API REST
 
-**Base URL:** `https://<tu-servicio>.onrender.com`
+**Base URL:** `https://.onrender.com`
 
 | Método | Endpoint | Descripción | Éxito |
 |---|---|---|---|
