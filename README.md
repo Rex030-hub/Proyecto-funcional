@@ -91,11 +91,13 @@ Los módulos pueden activarse o desactivarse de forma independiente mediante `ap
 - SLF4J + Logback — logging con MDC
 - `java.net.http.HttpClient` — cliente de la API externa
 - Lombok
+- Backend del sistema de modo produccion (Servido para render y Postgresql): https://github.com/Ialiaga-pin/Backend_bli
 
 **Frontend**
 - HTML5 semántico · CSS3 · JavaScript ES6+ sin dependencias
 - `fetch` + `FormData` para consumo de la API
 - Modales de pergamino, tema claro/oscuro (`Alt + T`), arrastrar y soltar
+- FrontEnd para utitilzar en modo local: https://github.com/Ialiaga-pin/front
 
 **Infraestructura**
 - Render (Web Service Docker + PostgreSQL gestionado)
