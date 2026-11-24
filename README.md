@@ -36,7 +36,7 @@ Evalúa la confiabilidad de fuentes web, detecta patrones compatibles con genera
 
 ##  Descripción
 
-**Bibliography Search** es una plataforma web que asiste a estudiantes e investigadores en la evaluación crítica de sus fuentes. Se presenta como un *libro de análisis* de cuatro páginas: dos dedicadas al análisis (URL y PDF) y dos a las instrucciones de uso, más un módulo de cumplimientos normativos.
+**Bibliographic Search** es una plataforma web que asiste a estudiantes e investigadores en la evaluación crítica de sus fuentes. Se presenta como un *libro de análisis* de cuatro páginas: dos dedicadas al análisis (URL y PDF) y dos a las instrucciones de uso, más un módulo de cumplimientos normativos.
 
 El sistema se compone de dos piezas desacopladas:
 
