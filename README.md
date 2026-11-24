@@ -5,6 +5,7 @@
 **El libro del análisis**
 
 > *"De una página dudosa a la investigación perfecta en un solo clic."*
+> > *Visita acá (https://bibliographicsearch-six.vercel.app/)*
 
 Evalúa la confiabilidad de fuentes web, detecta patrones compatibles con generación por IA en documentos PDF y produce citas APA 7 listas para usar.
 
