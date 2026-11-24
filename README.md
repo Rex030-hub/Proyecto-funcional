@@ -178,8 +178,8 @@ Las fechas se almacenan como texto porque la fuente externa entrega formatos het
 
 ```bash
 # 1. Clonar
-git clone https://github.com/<organizacion>/Biblography_Search.git
-cd Biblography_Search/backend
+git clone https://github.com/Rex030-hub/Proyecto-funcional
+cd Proyecto-funcional
 
 # 2. Configurar la clave (elige UNA de las tres vías)
 export EXA_API_KEY=tu_clave                 # variable de entorno
